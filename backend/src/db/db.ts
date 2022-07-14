@@ -1,13 +1,14 @@
-import { Dialect, Sequelize } from "sequelize"
+import { Sequelize } from 'sequelize-typescript'
+import User from '../models/UserModel';
 
-console.log(process.env.DB_HOST)
-
-const hostConfig = {
-  host: process.env.DB_HOST as string,
-  dialect: process.env.DB_DIALECT as Dialect
-}
-
-const sequelize = new Sequelize(process.env.DB_NAME as string, process.env.DB_USER as string, "", hostConfig)
+const sequelize = new Sequelize({
+  database: process.env.DB_NAME as string,
+  dialect: "mysql",
+  username: process.env.DB_USER as string,
+  password: "",
+  storage: ":memory:",
+  models: [User]
+})
 
 const verifyConnection = async () => {
   try {

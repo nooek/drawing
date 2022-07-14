@@ -22,10 +22,11 @@
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.18",
-    "sequelize": "^6.21.2",
+    "sequelize-typescript": "^2.1.3",
     "sequelizer": "^1.1.4",
     "ts-node": "^10.8.2",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12"
