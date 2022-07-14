@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon src/server.ts",
     "build": "rm -rf build/ && prettier --write src/ && tsc "
   },
@@ -24,11 +24,15 @@
     "nodemon": "^2.0.18",
     "sequelize-typescript": "^2.1.3",
     "sequelizer": "^1.1.4",
-    "ts-node": "^10.8.2",
     "typescript": "^4.7.4",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.12"
+    "@swc/core": "^1.2.215",
+    "@swc/jest": "^0.2.21",
+    "@types/cors": "^2.8.12",
+    "@types/jest": "^28.1.5",
+    "jest": "^28.1.3",
+    "ts-node": "^10.9.1"
   }
 }
