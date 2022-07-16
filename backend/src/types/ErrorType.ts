@@ -1,7 +1,11 @@
+type Body = {
+  paramName?: string;
+  message: string;
+}
+
 type ErrorAttributes = {
-  paramName: string;
-  messageToClient: string;
+  body: Body;
   statusCode: number;
-};
+}
 
 export default ErrorAttributes;

@@ -11,12 +11,10 @@ export default class CreateUserController {
         body: user
       }
     } catch(e: any) {
-        console.log(e)
+      console.log(e)
       return {
         statusCode: e.statusCode,
-        body: {
-          messageToClient: e.messageToClient
-        }
+        body: e.body
       }
     }
   }

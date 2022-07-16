@@ -1,15 +1,21 @@
-import ErrorAttributes from "../../../types/ErrorType"
+// import ErrorAttributes from "../../../types/ErrorType"
 
-type Response = {
-  error: string;
-  messageToClient: string;
-  statusCode: number;
-}
+// type Body = {
+//   error: string;
+//   message: string;
+// }
 
-export default function createError(props: ErrorAttributes, errorType: string): Response{
-  return {
-    error: `${errorType} error: ${props.paramName}`,
-    messageToClient: props.messageToClient,
-    statusCode: props.statusCode
-  }
-}
+// type Response = {
+//   body: Body;
+//   statusCode: number;
+// }
+
+// export default function createError(props: ErrorAttributes, errorType: string): Response{
+//   return {
+//     body: {
+//       error: `${errorType} error: ${props.paramName}`,
+//       message: props.message,
+//     },
+//     statusCode: props.statusCode
+//   }
+// }

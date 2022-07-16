@@ -1,5 +1,6 @@
 import User from "../../../models/UserModel";
-import UserAttributes from "../../../types/UserType"
+import UserAttributes from "../../../types/UserType";
+import { ServerError } from "../../../utils/errors";
 
 export default class UserRepo {
   async create(userData: UserAttributes) {
@@ -8,13 +9,32 @@ export default class UserRepo {
         id: userData.id,
         name: userData.name,
         email: userData.email,
-        password: userData.password
-      })
-      user.save()
-      return user
-    } catch(err) {
-      console.log(err)
-      return err
-    }     
+        password: userData.password,
+      });
+      user.save();
+      return user;
+    } catch (err) {
+      throw new ServerError({
+        statusCode: 500,
+        body: {
+          message: "An error ocurred.",
+        },
+      });
+    }
+  }
+
+  async findByEmail(email: string) {
+    try {
+      const user = await User.findOne({ where: { email: email } });
+
+      return user;
+    } catch (err) {
+      throw new ServerError({
+        statusCode: 500,
+        body: {
+          message: "An error ocurred.",
+        },
+      });
+    }
   }
 }
