@@ -1,4 +1,4 @@
-interface UserAttributes {
+type UserAttributes = {
   id: string;
   name: string;
   email: string;

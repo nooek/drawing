@@ -1,5 +1,5 @@
 import { Table, Column, Model, PrimaryKey, AllowNull, Length, DataType } from "sequelize-typescript"
-import UserAttributes from "../interfaces/UserInterface";
+import UserAttributes from "../types/UserType";
 
 @Table
 class User extends Model<UserAttributes> {
