@@ -23,7 +23,6 @@ export default class User {
           paramName: "name"
         },
         statusCode: 400,
-        aaa: "dsad"
       })
     }
 

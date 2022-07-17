@@ -22,6 +22,7 @@ export default class CreateUserUsecase {
         email: userData.email,
         password: userData.password,
       });
+      console.log(userEntity)
 
       const hashedPassword = await this.hashPassword.hash(userEntity.getPassword());
 
