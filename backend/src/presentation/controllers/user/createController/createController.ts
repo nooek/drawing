@@ -1,4 +1,4 @@
-import { createUserUsecase } from "../../../main/usecases/user";
+import { createUserUsecase } from "../../../../main/usecases/user";
 
 export default class CreateUserController {
   async route(httpRequest: any) {
