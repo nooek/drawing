@@ -47,7 +47,11 @@ export default class CreateUserUsecase {
       return {
         message: "Success",
         statusCode: 200,
-        user: createdUser,
+        user: {
+          id: userEntity.getId(),
+          name: userEntity.getName(),
+          email: userEntity.getEmail()
+        },
       };
     } catch (err) {
       throw err;

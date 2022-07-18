@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1658164506174" clover="3.2.0">
-  <project timestamp="1658164506175" name="All files">
-    <metrics statements="249" coveredstatements="215" conditionals="66" coveredconditionals="61" methods="36" coveredmethods="27" elements="351" coveredelements="303" complexity="0" loc="249" ncloc="249" packages="7" files="12" classes="12"/>
+<coverage generated="1658168851069" clover="3.2.0">
+  <project timestamp="1658168851070" name="All files">
+    <metrics statements="293" coveredstatements="256" conditionals="83" coveredconditionals="77" methods="37" coveredmethods="31" elements="413" coveredelements="364" complexity="0" loc="293" ncloc="293" packages="8" files="13" classes="13"/>
     <package name="domain.entities">
       <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="index.ts" path="C:\drawingApp\backend\src\domain\entities\index.ts">
@@ -20,9 +20,9 @@
       </file>
     </package>
     <package name="domain.entities.userEntity">
-      <metrics statements="76" coveredstatements="60" conditionals="16" coveredconditionals="14" methods="7" coveredmethods="6"/>
+      <metrics statements="76" coveredstatements="60" conditionals="19" coveredconditionals="16" methods="7" coveredmethods="7"/>
       <file name="UserEntity.ts" path="C:\drawingApp\backend\src\domain\entities\userEntity\UserEntity.ts">
-        <metrics statements="76" coveredstatements="60" conditionals="16" coveredconditionals="14" methods="7" coveredmethods="6"/>
+        <metrics statements="76" coveredstatements="60" conditionals="19" coveredconditionals="16" methods="7" coveredmethods="7"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -33,15 +33,15 @@
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="6" type="cond" truecount="2" falsecount="0"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
@@ -50,8 +50,8 @@
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="28" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="29" count="4" type="cond" truecount="0" falsecount="1"/>
+        <line num="28" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="6" type="cond" truecount="0" falsecount="1"/>
         <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
@@ -60,8 +60,8 @@
         <line num="35" count="0" type="stmt"/>
         <line num="36" count="0" type="stmt"/>
         <line num="37" count="0" type="stmt"/>
-        <line num="38" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="39" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="38" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="39" count="6" type="cond" truecount="1" falsecount="0"/>
         <line num="40" count="1" type="stmt"/>
         <line num="41" count="1" type="stmt"/>
         <line num="42" count="1" type="stmt"/>
@@ -70,8 +70,8 @@
         <line num="45" count="1" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
-        <line num="48" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="49" count="4" type="cond" truecount="0" falsecount="1"/>
+        <line num="48" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="49" count="6" type="cond" truecount="0" falsecount="1"/>
         <line num="50" count="0" type="stmt"/>
         <line num="51" count="0" type="stmt"/>
         <line num="52" count="0" type="stmt"/>
@@ -80,8 +80,8 @@
         <line num="55" count="0" type="stmt"/>
         <line num="56" count="0" type="stmt"/>
         <line num="57" count="0" type="stmt"/>
-        <line num="58" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="59" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="58" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="59" count="6" type="cond" truecount="2" falsecount="0"/>
         <line num="60" count="1" type="stmt"/>
         <line num="61" count="1" type="stmt"/>
         <line num="62" count="1" type="stmt"/>
@@ -90,19 +90,19 @@
         <line num="65" count="1" type="stmt"/>
         <line num="66" count="1" type="stmt"/>
         <line num="67" count="1" type="stmt"/>
-        <line num="68" count="1" type="stmt"/>
-        <line num="69" count="1" type="stmt"/>
-        <line num="70" count="1" type="stmt"/>
-        <line num="71" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="72" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="73" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="74" count="1" type="stmt"/>
-        <line num="75" count="1" type="stmt"/>
+        <line num="68" count="3" type="stmt"/>
+        <line num="69" count="3" type="stmt"/>
+        <line num="70" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="71" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="72" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="73" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="74" count="3" type="stmt"/>
+        <line num="75" count="3" type="stmt"/>
         <line num="76" count="1" type="stmt"/>
       </file>
     </package>
     <package name="mocks.infra.user">
-      <metrics statements="70" coveredstatements="64" conditionals="28" coveredconditionals="27" methods="9" coveredmethods="8"/>
+      <metrics statements="69" coveredstatements="63" conditionals="28" coveredconditionals="27" methods="9" coveredmethods="8"/>
       <file name="fakeDb.ts" path="C:\drawingApp\backend\src\mocks\infra\user\fakeDb.ts">
         <metrics statements="26" coveredstatements="24" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="5"/>
         <line num="1" count="1" type="stmt"/>
@@ -111,21 +111,21 @@
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="20" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
+        <line num="19" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="24" count="7" type="stmt"/>
@@ -133,18 +133,67 @@
         <line num="26" count="1" type="stmt"/>
       </file>
       <file name="userDbMock.ts" path="C:\drawingApp\backend\src\mocks\infra\user\userDbMock.ts">
-        <metrics statements="44" coveredstatements="40" conditionals="22" coveredconditionals="21" methods="3" coveredmethods="3"/>
+        <metrics statements="43" coveredstatements="39" conditionals="22" coveredconditionals="21" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="7" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="4" type="cond" truecount="0" falsecount="1"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="4" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="29" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="30" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="mocks.main.usecases.user">
+      <metrics statements="45" coveredstatements="42" conditionals="12" coveredconditionals="12" methods="1" coveredmethods="1"/>
+      <file name="createUserUsecaseMock.ts" path="C:\drawingApp\backend\src\mocks\main\usecases\user\createUserUsecaseMock.ts">
+        <metrics statements="45" coveredstatements="42" conditionals="12" coveredconditionals="12" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="6" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="6" type="cond" truecount="2" falsecount="0"/>
         <line num="8" count="6" type="cond" truecount="2" falsecount="0"/>
         <line num="9" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="11" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
         <line num="14" count="2" type="stmt"/>
@@ -153,43 +202,44 @@
         <line num="17" count="2" type="stmt"/>
         <line num="18" count="2" type="stmt"/>
         <line num="19" count="2" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
+        <line num="20" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
-        <line num="24" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="25" count="2" type="cond" truecount="0" falsecount="1"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
-        <line num="30" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="31" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="32" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="33" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="35" count="2" type="stmt"/>
-        <line num="36" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="36" count="5" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
-        <line num="38" count="0" type="stmt"/>
-        <line num="39" count="0" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
         <line num="40" count="0" type="stmt"/>
         <line num="41" count="0" type="stmt"/>
-        <line num="42" count="1" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
         <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
       </file>
     </package>
     <package name="utils.errors">
-      <metrics statements="54" coveredstatements="42" conditionals="7" coveredconditionals="5" methods="12" coveredmethods="5"/>
+      <metrics statements="54" coveredstatements="42" conditionals="9" coveredconditionals="7" methods="12" coveredmethods="7"/>
       <file name="index.ts" path="C:\drawingApp\backend\src\utils\errors\index.ts">
-        <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="2"/>
+        <metrics statements="6" coveredstatements="6" conditionals="3" coveredconditionals="3" methods="4" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="6" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="1" type="cond" truecount="3" falsecount="0"/>
       </file>
       <file name="invalidParamError.ts" path="C:\drawingApp\backend\src\utils\errors\invalidParamError.ts">
         <metrics statements="12" coveredstatements="12" conditionals="4" coveredconditionals="2" methods="2" coveredmethods="2"/>
@@ -237,10 +287,10 @@
         <line num="12" count="1" type="stmt"/>
       </file>
       <file name="unauthorizedError.ts" path="C:\drawingApp\backend\src\utils\errors\unauthorizedError.ts">
-        <metrics statements="12" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="12" coveredstatements="8" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
+        <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
@@ -280,14 +330,14 @@
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="4" count="7" type="cond" truecount="2" falsecount="0"/>
         <line num="5" count="2" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
-        <line num="10" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="11" count="3" type="stmt"/>
+        <line num="10" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="11" count="5" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
       </file>
@@ -297,15 +347,15 @@
       <file name="passwordValidator.ts" path="C:\drawingApp\backend\src\validators\passwordValidator\passwordValidator.ts">
         <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="cond" truecount="2" falsecount="0"/>
-        <line num="2" count="5" type="cond" truecount="3" falsecount="0"/>
+        <line num="2" count="7" type="cond" truecount="3" falsecount="0"/>
         <line num="3" count="3" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
         <line num="5" count="3" type="stmt"/>
         <line num="6" count="3" type="stmt"/>
         <line num="7" count="3" type="stmt"/>
-        <line num="8" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
+        <line num="8" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
       </file>
     </package>
   </project>
