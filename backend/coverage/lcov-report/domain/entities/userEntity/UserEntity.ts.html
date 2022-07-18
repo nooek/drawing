@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.81% </span>
+                <span class="strong">78.94% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/77</span>
+                <span class='fraction'>60/76</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.81% </span>
+                <span class="strong">78.94% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/77</span>
+                <span class='fraction'>60/76</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -139,8 +139,7 @@
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -176,8 +175,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -197,7 +195,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -245,16 +243,15 @@ export default class User {
       })
     }
 &nbsp;
-    if (!props.email) <span class="branch-0 cbranch-no" title="branch not covered" >{ /* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >      throw new this.MissingParamError({ /* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >        body: { /* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >          message: "Please provide an email", /* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >          paramName: "email" /* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >        }, /* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >        statusCode: 400 /* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >      }) /* istanbul ignore next */ </span>
-    } /* istanbul ignore next */ 
-  
+    if (!props.email) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >      throw new this.MissingParamError({</span>
+<span class="cstat-no" title="statement not covered" >        body: {</span>
+<span class="cstat-no" title="statement not covered" >          message: "Please provide an email",</span>
+<span class="cstat-no" title="statement not covered" >          paramName: "email"</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        statusCode: 400</span>
+<span class="cstat-no" title="statement not covered" >      })</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
     const emailValid = this.emailValidator(props.email)
     if (!emailValid.isValid) {
       throw new this.InvalidParamError({
@@ -266,15 +263,15 @@ export default class User {
       })
     }
 &nbsp;
-    if (!props.password) <span class="branch-0 cbranch-no" title="branch not covered" >{/* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >      throw new this.MissingParamError({/* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >        body: {/* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >          message: "Please provide a password",/* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >          paramName: "password"/* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >        },/* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >        statusCode: 400/* istanbul ignore next */ </span>
-<span class="cstat-no" title="statement not covered" >      })/* istanbul ignore next */ </span>
-    }/* istanbul ignore next */ 
+    if (!props.password) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >      throw new this.MissingParamError({</span>
+<span class="cstat-no" title="statement not covered" >        body: {</span>
+<span class="cstat-no" title="statement not covered" >          message: "Please provide a password",</span>
+<span class="cstat-no" title="statement not covered" >          paramName: "password"</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >        statusCode: 400</span>
+<span class="cstat-no" title="statement not covered" >      })</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
     const passwordValid = this.passwordValidator(props.password)
     if (!passwordValid.isValid) {
       throw new this.InvalidParamError({
@@ -301,7 +298,7 @@ export default class User {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-07-17T01:12:30.375Z
+                at 2022-07-18T17:15:06.007Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

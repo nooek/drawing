@@ -27,7 +27,12 @@ export default class UserRepo {
     try {
       const user = await User.findOne({ where: { email: email } });
 
-      return user;
+      return {
+        id: user ? user.id : null,
+        email: user ? user.email : null,
+        name: user ? user.name : null,
+        password: user ? user.password : null,
+      };
     } catch (err) {
       throw new ServerError({
         statusCode: 500,
