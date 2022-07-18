@@ -4,7 +4,7 @@ export default class CreateUserController {
   async route(httpRequest: any) {
     try {
       const { body } = httpRequest
-      const user = await createUserUsecase.execute(body)
+      const user = await createUserUsecase.execute(body.userData)
 
       return {
         statusCode: 200,

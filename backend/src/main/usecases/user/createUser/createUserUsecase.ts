@@ -28,7 +28,7 @@ export default class CreateUserUsecase {
 
       const userExists = await this.userDb.findByEmail(userData.email);
 
-      if (userExists) {
+      if (userExists.id !== null) {
         throw new this.UnauthorizedError({
           statusCode: 403,
           body: {
