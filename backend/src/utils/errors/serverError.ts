@@ -7,6 +7,6 @@ export default class ServerError extends Error {
   constructor(props: ErrorAttributes) {
     super("Server error")
     this.statusCode = props.statusCode ? props.statusCode : 500;
-    this.body = props.body;
+    this.body = props.body ? props.body : { message: "An error ocurred." };
   }
 }

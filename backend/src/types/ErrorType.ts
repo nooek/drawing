@@ -4,7 +4,7 @@ type Body = {
 }
 
 type ErrorAttributes = {
-  body: Body;
+  body?: Body;
   statusCode: number;
 }
 

@@ -14,12 +14,7 @@ export default class UserRepo {
       user.save();
       return user;
     } catch (err) {
-      throw new ServerError({
-        statusCode: 500,
-        body: {
-          message: "An error ocurred.",
-        },
-      });
+      throw new ServerError({ statusCode: 500 });
     }
   }
 
@@ -34,12 +29,7 @@ export default class UserRepo {
         password: user ? user.password : null,
       };
     } catch (err) {
-      throw new ServerError({
-        statusCode: 500,
-        body: {
-          message: "An error ocurred.",
-        },
-      });
+      throw new ServerError({ statusCode: 500 });
     }
   }
 }
