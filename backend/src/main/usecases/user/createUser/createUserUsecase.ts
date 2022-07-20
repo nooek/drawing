@@ -1,13 +1,13 @@
 import { user } from "../../../../domain/entities";
 import UserAttributes from "../../../../types/UserType";
-
+import HashPasswordInterface from "../../../../interfaces/helpers/hashPasswordInterface";
 export default class CreateUserUsecase {
   private userDb;
   public uuid;
-  private hashPassword;
+  private hashPassword: HashPasswordInterface;
   private UnauthorizedError;
 
-  constructor(userDb: any, uuid: Function, hashPassword: any, UnauthorizedError: any) {
+  constructor(userDb: any, uuid: Function, hashPassword: HashPasswordInterface, UnauthorizedError: any) {
     this.userDb = userDb;
     this.uuid = uuid;
     this.hashPassword = hashPassword;
