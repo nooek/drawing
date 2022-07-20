@@ -42,7 +42,7 @@ export default class LoginUsecase implements LoginInterface {
         throw new this.MissingParamError({
           statusCode: 400,
           body: {
-            message: "Email not provided",
+            message: "Password not provided",
           },
         });
 
@@ -56,12 +56,13 @@ export default class LoginUsecase implements LoginInterface {
         });
       }
 
-      const isPasswordSame = this.encrypter.compare(loginInfo.password, userFound.password);
+      const isPasswordSame = await this.encrypter.compare(loginInfo.password, userFound.password);
+      console.log(isPasswordSame)
       if (!isPasswordSame) {
         throw new this.UnauthorizedError({
           statusCode: 401,
           body: {
-            message: "Email/Password incorect",
+            message: "Email/Password incorrect",
           },
         });
       }
@@ -76,8 +77,8 @@ export default class LoginUsecase implements LoginInterface {
         returnData,
         token: token,
       };
-    } catch (e) {
-      throw new this.ServerError({ statusCode: 500 });
+    } catch (err) {
+      throw err
     }
   }
 }
