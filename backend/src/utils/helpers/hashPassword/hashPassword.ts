@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt"
-
-export default class HashPassword {
+import HashPasswordInterface from "../../../interfaces/helpers/hashPasswordInterface";
+export default class HashPassword implements HashPasswordInterface {
   async hash(password: string) {
     const saltRounds = 10
     const hashedPassword = await bcrypt.hash(password, saltRounds)
