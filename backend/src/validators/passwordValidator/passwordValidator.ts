@@ -1,4 +1,6 @@
-export default function passwordValidator(password: string) {
+import { PasswordValidatorResponse } from "../../interfaces/validators/passwordValidatorInterface"
+
+export default function passwordValidator(password: string): PasswordValidatorResponse {
   if (password.length < 8 || !/\d/.test(password)) {
     return {
       message: "The password must have at least 8 characters and a number",
@@ -6,5 +8,5 @@ export default function passwordValidator(password: string) {
     }
   }
 
-  return { isValid: true }
+  return { isValid: true, message: "Password is valid" }
 }
