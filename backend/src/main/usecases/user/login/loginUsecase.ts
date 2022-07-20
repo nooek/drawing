@@ -1,9 +1,10 @@
+import HashPasswordInterface from "../../../../interfaces/helpers/hashPasswordInterface";
 import TokenGeneratorInterface from "../../../../interfaces/helpers/tokenGeneratorInterface";
 import { LoginInfoType } from "../../../../types/UserLoginType";
-
-export default class LoginUsecase {
+import LoginInterface from "../../../../interfaces/main/usecases/user/loginInterface";
+export default class LoginUsecase implements LoginInterface {
   private tokenGenerator: TokenGeneratorInterface;
-  private encrypter: any;
+  private encrypter: HashPasswordInterface;
   private userDb: any;
   private ServerError: any;
   private InvalidParamError: any;
@@ -11,9 +12,9 @@ export default class LoginUsecase {
   private MissingParamError: any;
 
   constructor(
-    tokenGenerator: TokenGeneratorInterface,
-    encrypter: any,
     userDb: any,
+    tokenGenerator: TokenGeneratorInterface,
+    encrypter: HashPasswordInterface,
     ServerError: any,
     MissingParamError: any,
     InvalidParamError: any,

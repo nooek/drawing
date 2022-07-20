@@ -5,7 +5,7 @@ export default class InvalidParamError extends Error {
   public statusCode: number;
 
   constructor(props: ErrorAttributes) {
-    super(`Invalid Param: ${props.body.paramName ? props.body.paramName : ""}`)
+    super(`Invalid Param`)
     this.statusCode = props.statusCode ? props.statusCode : 400;
     this.body = props.body;
   }

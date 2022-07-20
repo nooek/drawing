@@ -1,5 +1,4 @@
 type Body = {
-  paramName?: string;
   message: string;
 }
 

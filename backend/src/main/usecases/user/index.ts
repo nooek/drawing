@@ -1,11 +1,20 @@
 import CreateUserUsecase from "./createUser/createUserUsecase";
+import LoginUsecase from "./login/loginUsecase";
 import UserRepo from "../../../infra/repositories/user/userRepo";
 import { v4 as uuidv4 } from 'uuid';
 import HashPassword from "../../../utils/helpers/hashPassword/hashPassword";
-import { UnauthorizedError } from "../../../utils/errors";
+import TokenGenerator from "../../../utils/helpers/tokenGenerator/tokenGenerator";
+import { InvalidParamError, MissingParamError, ServerError, UnauthorizedError } from "../../../utils/errors";
 
 const userDb = new UserRepo()
 
-const createUserUsecase = new CreateUserUsecase(userDb, uuidv4, new HashPassword, UnauthorizedError);
+const hashPassword = new HashPassword
+const tokenGenerator = new TokenGenerator
 
-export { createUserUsecase }
+const createUserUsecase = new CreateUserUsecase(userDb, uuidv4, hashPassword, UnauthorizedError);
+const loginUsecase = new LoginUsecase(userDb, tokenGenerator, hashPassword, ServerError, MissingParamError, InvalidParamError, UnauthorizedError)
+
+export { 
+  createUserUsecase,
+  loginUsecase
+}
