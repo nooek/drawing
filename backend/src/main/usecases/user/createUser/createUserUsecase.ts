@@ -37,7 +37,7 @@ export default class CreateUserUsecase {
         });
       }
 
-      const createdUser = await this.userDb.create({
+      await this.userDb.create({
         id: userEntity.getId(),
         name: userEntity.getName(),
         email: userEntity.getEmail(),

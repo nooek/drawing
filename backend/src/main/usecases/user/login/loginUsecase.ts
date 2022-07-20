@@ -1,9 +1,4 @@
-import { MissingParamError } from "../../../../utils/errors";
-
-type LoginInfoType = {
-  email: string;
-  password: string;
-};
+import LoginInfoType from "../../../../types/UserLoginType";
 
 export default class LoginUsecase {
   private tokenGenerator: any;
@@ -26,13 +21,13 @@ export default class LoginUsecase {
 
   async execute(loginInfo: LoginInfoType) {
     try {
-      if (!loginInfo.email) throw new MissingParamError({
+      if (!loginInfo.email) throw new this.MissingParamError({
         statusCode: 400,
         body: {
           message: "Email not provided"
         }
       })
-      if (!loginInfo.password) throw new MissingParamError({
+      if (!loginInfo.password) throw new this.MissingParamError({
         statusCode: 400,
         body: {
           message: "Email not provided"
@@ -64,7 +59,7 @@ export default class LoginUsecase {
         name: userFound.name,
         email: userFound.email,
       };
-      const token = this.tokenGenerator.generate(returnData, process.env.TOKEN_KEY);
+      const token = this.tokenGenerator.generate(returnData);
       if (token) {
         return {
           returnData,
