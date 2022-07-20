@@ -12,7 +12,7 @@ const hashPassword = new HashPassword
 const tokenGenerator = new TokenGenerator
 
 const createUserUsecase = new CreateUserUsecase(userDb, uuidv4, hashPassword, UnauthorizedError);
-const loginUsecase = new LoginUsecase(userDb, tokenGenerator, hashPassword, ServerError, MissingParamError, InvalidParamError, UnauthorizedError)
+const loginUsecase = new LoginUsecase(userDb, tokenGenerator, hashPassword, MissingParamError, InvalidParamError, UnauthorizedError)
 
 export { 
   createUserUsecase,

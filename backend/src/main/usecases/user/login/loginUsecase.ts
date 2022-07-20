@@ -6,7 +6,6 @@ export default class LoginUsecase implements LoginInterface {
   private tokenGenerator: TokenGeneratorInterface;
   private encrypter: HashPasswordInterface;
   private userDb: any;
-  private ServerError: any;
   private InvalidParamError: any;
   private UnauthorizedError: any;
   private MissingParamError: any;
@@ -15,7 +14,6 @@ export default class LoginUsecase implements LoginInterface {
     userDb: any,
     tokenGenerator: TokenGeneratorInterface,
     encrypter: HashPasswordInterface,
-    ServerError: any,
     MissingParamError: any,
     InvalidParamError: any,
     UnauthorizedError: any,
@@ -23,7 +21,6 @@ export default class LoginUsecase implements LoginInterface {
     this.tokenGenerator = tokenGenerator;
     this.encrypter = encrypter;
     this.userDb = userDb;
-    this.ServerError = ServerError;
     this.MissingParamError = MissingParamError;
     this.InvalidParamError = InvalidParamError;
     this.UnauthorizedError = UnauthorizedError;
