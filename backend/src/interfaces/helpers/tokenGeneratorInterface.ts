@@ -1,7 +1,7 @@
-import LoginInfoType from "../../types/UserLoginType";
+import { LoginReturn } from "../../types/UserLoginType";
 
 interface TokenGeneratorInterface {
-  generate(data: LoginInfoType): string
+  generate(data: LoginReturn): string
 }
 
 export default TokenGeneratorInterface

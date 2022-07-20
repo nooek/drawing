@@ -1,6 +1,10 @@
-type LoginInfoType = {
+export type LoginInfoType = {
   email: string;
   password: string;
 };
 
-export default LoginInfoType;
+export type LoginReturn = {
+  id: string;
+  name: string;
+  email: string;
+}

@@ -1,7 +1,8 @@
-import LoginInfoType from "../../../../types/UserLoginType";
+import TokenGeneratorInterface from "../../../../interfaces/helpers/tokenGeneratorInterface";
+import { LoginInfoType } from "../../../../types/UserLoginType";
 
 export default class LoginUsecase {
-  private tokenGenerator: any;
+  private tokenGenerator: TokenGeneratorInterface;
   private encrypter: any;
   private userDb: any;
   private ServerError: any;
@@ -9,38 +10,48 @@ export default class LoginUsecase {
   private UnauthorizedError: any;
   private MissingParamError: any;
 
-  constructor(tokenGenerator: any, encrypter: any, userDb: any, ServerError: any, MissingParamError: any, InvalidParamError: any, UnauthorizedError: any) {
+  constructor(
+    tokenGenerator: TokenGeneratorInterface,
+    encrypter: any,
+    userDb: any,
+    ServerError: any,
+    MissingParamError: any,
+    InvalidParamError: any,
+    UnauthorizedError: any,
+  ) {
     this.tokenGenerator = tokenGenerator;
     this.encrypter = encrypter;
     this.userDb = userDb;
     this.ServerError = ServerError;
-    this.MissingParamError = MissingParamError
+    this.MissingParamError = MissingParamError;
     this.InvalidParamError = InvalidParamError;
     this.UnauthorizedError = UnauthorizedError;
   }
 
   async execute(loginInfo: LoginInfoType) {
     try {
-      if (!loginInfo.email) throw new this.MissingParamError({
-        statusCode: 400,
-        body: {
-          message: "Email not provided"
-        }
-      })
-      if (!loginInfo.password) throw new this.MissingParamError({
-        statusCode: 400,
-        body: {
-          message: "Email not provided"
-        }
-      })
+      if (!loginInfo.email)
+        throw new this.MissingParamError({
+          statusCode: 400,
+          body: {
+            message: "Email not provided",
+          },
+        });
+      if (!loginInfo.password)
+        throw new this.MissingParamError({
+          statusCode: 400,
+          body: {
+            message: "Email not provided",
+          },
+        });
 
       const userFound = await this.userDb.findByEmail(loginInfo.email);
       if (userFound.id === null) {
         throw new this.InvalidParamError({
           statusCode: 400,
           body: {
-            message: "User not found"
-          }
+            message: "User not found",
+          },
         });
       }
 
@@ -49,8 +60,8 @@ export default class LoginUsecase {
         throw new this.UnauthorizedError({
           statusCode: 401,
           body: {
-            message: "Email/Password incorect"
-          }
+            message: "Email/Password incorect",
+          },
         });
       }
 
@@ -60,13 +71,10 @@ export default class LoginUsecase {
         email: userFound.email,
       };
       const token = this.tokenGenerator.generate(returnData);
-      if (token) {
-        return {
-          returnData,
-          token: token,
-        };
-      }
-      throw new this.ServerError({ statusCode: 500 });
+      return {
+        returnData,
+        token: token,
+      };
     } catch (e) {
       throw new this.ServerError({ statusCode: 500 });
     }
