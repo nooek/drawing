@@ -7,9 +7,9 @@ export default class AuthController {
 
   async route(httpRequest: any) {
     try {
-      const { token } = httpRequest.req.headers;
+      const { Authorization } = httpRequest.req.header;
 
-      const user = await this.authUsecase.execute(token);
+      const user = await this.authUsecase.execute(Authorization);
 
       return {
         statusCode: 200,
