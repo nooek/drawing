@@ -2,36 +2,35 @@ import React, { useState } from "react"
 import axios from "axios"
 import { 
   Container,
-  LoginText,
+  RegisterText,
   FormsContainer,
   InputsContainer,
   FormsInput,
-  LoginButton,
+  RegisterButton,
   Message
-} from "../styles/loginPageStyles"
+} from "../styles/registerPageStyles"
 
-type RegisterForms = {
-  name: string;
+type LoginForms = {
   email: string;
   password: string;
 }
 
-const Register = () => {
-  const [formsData, setFormsData] = useState<RegisterForms>({
-    name: "",
+const Login = () => {
+  const [formsData, setFormsData] = useState<LoginForms>({
     email: "",
     password: ""
   })
   const [blockButton, setBlockButton] = useState<boolean>(false)
   const [message, setMessage] = useState<string>("")
   
-  const register = () => {
+  const login = () => {
     setBlockButton(true)
-    axios.post("http://localhost:8888/user", {
-      userData: formsData
+    axios.post("http://localhost:8888/user/login", {
+      loginInfo: formsData
     }).then(res => {
-      if (res.data.statusCode === 200) {
-        setMessage("You can login now :)")
+      if (res.status === 200) {
+        console.log(res)
+        setMessage("")
         setBlockButton(false)
       }
     }).catch(err => {
@@ -40,27 +39,22 @@ const Register = () => {
     })
   }
 
-  console.log(blockButton)
-
   return (
     <Container>
-      <LoginText>Register</LoginText>
+      <RegisterText>Login</RegisterText>
       <FormsContainer messageExists={message ? true : false}>
         <InputsContainer>
-          <FormsInput 
-            placeholder="Name" 
-            onChange={(e) => setFormsData({...formsData, name: e.target.value})}
-          />
           <FormsInput 
             placeholder="Email"
             onChange={(e) => setFormsData({...formsData, email: e.target.value})}
           />
           <FormsInput 
             placeholder="Password"
+            type="password"
             onChange={(e) => setFormsData({...formsData, password: e.target.value})}
           />
         </InputsContainer>
-        <LoginButton disabled={blockButton} onClick={() => register()}>Register</LoginButton>
+        <RegisterButton onClick={() => login()}>Login</RegisterButton>
       </FormsContainer>
       {
         message ? <Message>{message}</Message> : null
@@ -69,4 +63,4 @@ const Register = () => {
   )
 }
 
-export default Register;
+export default Login;
