@@ -22,22 +22,25 @@ const Register = () => {
     email: "",
     password: ""
   })
+  const [blockButton, setBlockButton] = useState<boolean>(false)
   const [message, setMessage] = useState<string>("")
   
   const register = () => {
-    setMessage("")
+    setBlockButton(true)
     axios.post("http://localhost:8888/user", {
       userData: formsData
     }).then(res => {
       if (res.data.statusCode === 200) {
         setMessage("You can login now :)")
+        setBlockButton(false)
       }
     }).catch(err => {
-      setMessage(err.response.data.message)
+      if (err.response.data.message !== message) setMessage(err.response.data.message)
+      setBlockButton(false)
     })
   }
 
-  console.log(formsData)
+  console.log(blockButton)
 
   return (
     <Container>
@@ -57,7 +60,7 @@ const Register = () => {
             onChange={(e) => setFormsData({...formsData, password: e.target.value})}
           />
         </InputsContainer>
-        <RegisterButton onClick={() => register()}>Register</RegisterButton>
+        <RegisterButton disabled={blockButton} onClick={() => register()}>Register</RegisterButton>
       </FormsContainer>
       {
         message ? <Message>{message}</Message> : null
