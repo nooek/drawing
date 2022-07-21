@@ -1,5 +1,5 @@
 import LoginUsecase from "./loginUsecase";
-import tokenGeneratorMock, { mockGenerate } from "../../../../mocks/helpers/tokenGeneratorMock";
+import tokenGeneratorMock, { mockGenerate, mockDecode } from "../../../../mocks/helpers/tokenGeneratorMock";
 import encrypterMock, { mockHash, mockCompare } from "../../../../mocks/helpers/hashPasswordMock";
 import { mockFindByEmail, mockCreate } from "../../../../mocks/infra/user/userDbMock";
 import TokenGenerator from "../../../../utils/helpers/tokenGenerator/tokenGenerator";
@@ -26,7 +26,7 @@ jest.mock("../../../../utils/helpers/hashPassword/hashPassword.ts", () => {
 const makeSut = () => {
   const sut = new LoginUsecase(
     { findByEmail: mockFindByEmail },
-    { generate: mockGenerate },
+    { generate: mockGenerate, decode: mockDecode },
     { compare: mockCompare, hash: mockHash },
     MissingParamError,
     InvalidParamError,
@@ -72,7 +72,6 @@ describe("test loginusecase", () => {
     expect(mockCompare).toHaveBeenCalledTimes(1)
     expect(mockFindByEmail).toHaveBeenCalledTimes(1)
     expect(foundUser).toHaveProperty("returnData", {
-      id: user.id,
       name: user.name,
       email: user.email
     })

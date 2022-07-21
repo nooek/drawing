@@ -29,8 +29,8 @@ export default class LoginController {
     } catch (e: any) {
       console.log(e);
       return {
-        statusCode: e.statusCode,
-        body: e.body,
+        statusCode: e.statusCode ? e.statusCode : 500,
+        body: e.body ? e.body : e,
       };
     }
   }

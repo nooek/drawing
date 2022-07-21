@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1658343405602" clover="3.2.0">
-  <project timestamp="1658343405602" name="All files">
-    <metrics statements="485" coveredstatements="445" conditionals="118" coveredconditionals="111" methods="48" coveredmethods="44" elements="651" coveredelements="600" complexity="0" loc="485" ncloc="485" packages="12" files="19" classes="19"/>
+<coverage generated="1658439137662" clover="3.2.0">
+  <project timestamp="1658439137662" name="All files">
+    <metrics statements="491" coveredstatements="446" conditionals="121" coveredconditionals="112" methods="49" coveredmethods="45" elements="661" coveredelements="603" complexity="0" loc="491" ncloc="491" packages="12" files="19" classes="19"/>
     <package name="domain.entities">
       <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="index.ts" path="C:\drawingApp\backend\src\domain\entities\index.ts">
@@ -102,9 +102,9 @@
       </file>
     </package>
     <package name="main.usecases.user.login">
-      <metrics statements="81" coveredstatements="81" conditionals="12" coveredconditionals="12" methods="3" coveredmethods="3"/>
+      <metrics statements="80" coveredstatements="80" conditionals="12" coveredconditionals="12" methods="3" coveredmethods="3"/>
       <file name="loginUsecase.ts" path="C:\drawingApp\backend\src\main\usecases\user\login\loginUsecase.ts">
-        <metrics statements="81" coveredstatements="81" conditionals="12" coveredconditionals="12" methods="3" coveredmethods="3"/>
+        <metrics statements="80" coveredstatements="80" conditionals="12" coveredconditionals="12" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -180,16 +180,15 @@
         <line num="73" count="2" type="stmt"/>
         <line num="74" count="2" type="stmt"/>
         <line num="75" count="2" type="stmt"/>
-        <line num="76" count="2" type="stmt"/>
+        <line num="76" count="4" type="stmt"/>
         <line num="77" count="4" type="stmt"/>
         <line num="78" count="4" type="stmt"/>
-        <line num="79" count="4" type="stmt"/>
-        <line num="80" count="6" type="stmt"/>
-        <line num="81" count="1" type="stmt"/>
+        <line num="79" count="6" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
       </file>
     </package>
     <package name="mocks.helpers">
-      <metrics statements="32" coveredstatements="24" conditionals="7" coveredconditionals="7" methods="3" coveredmethods="3"/>
+      <metrics statements="39" coveredstatements="26" conditionals="8" coveredconditionals="8" methods="4" coveredmethods="4"/>
       <file name="hashPasswordMock.ts" path="C:\drawingApp\backend\src\mocks\helpers\hashPasswordMock.ts">
         <metrics statements="18" coveredstatements="13" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -212,7 +211,7 @@
         <line num="18" count="1" type="stmt"/>
       </file>
       <file name="tokenGeneratorMock.ts" path="C:\drawingApp\backend\src\mocks\helpers\tokenGeneratorMock.ts">
-        <metrics statements="14" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <metrics statements="21" coveredstatements="13" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="2" falsecount="0"/>
@@ -220,13 +219,20 @@
         <line num="5" count="2" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
       </file>
     </package>
     <package name="mocks.infra.user">
@@ -408,9 +414,9 @@
       </file>
     </package>
     <package name="presentation.controllers.user.loginController">
-      <metrics statements="37" coveredstatements="37" conditionals="7" coveredconditionals="7" methods="3" coveredmethods="3"/>
+      <metrics statements="37" coveredstatements="37" conditionals="9" coveredconditionals="7" methods="3" coveredmethods="3"/>
       <file name="loginController.ts" path="C:\drawingApp\backend\src\presentation\controllers\user\loginController\loginController.ts">
-        <metrics statements="37" coveredstatements="37" conditionals="7" coveredconditionals="7" methods="3" coveredmethods="3"/>
+        <metrics statements="37" coveredstatements="37" conditionals="9" coveredconditionals="7" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -442,8 +448,8 @@
         <line num="29" count="4" type="cond" truecount="1" falsecount="0"/>
         <line num="30" count="3" type="stmt"/>
         <line num="31" count="3" type="stmt"/>
-        <line num="32" count="3" type="stmt"/>
-        <line num="33" count="3" type="stmt"/>
+        <line num="32" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="33" count="3" type="cond" truecount="0" falsecount="1"/>
         <line num="34" count="3" type="stmt"/>
         <line num="35" count="3" type="stmt"/>
         <line num="36" count="4" type="stmt"/>
