@@ -1,4 +1,5 @@
 import jwt, { Secret } from "jsonwebtoken"
+import jwt_decode from "jwt-decode"
 import TokenGeneratorInterface from "../../../interfaces/helpers/tokenGeneratorInterface"
 import { LoginReturn } from "../../../types/UserLoginType"
 
@@ -8,5 +9,12 @@ export default class TokenGenerator implements TokenGeneratorInterface {
     
     if (token) return token
     throw new Error("Token could not be created")
+  }
+
+  decode(token: string) {
+    const decoded: LoginReturn = jwt_decode(token)
+
+    if (decoded) return decoded
+    throw new Error("Token couldn't be decoded")
   }
 }
