@@ -65,7 +65,6 @@ export default class LoginUsecase implements LoginInterface {
       }
 
       const returnData = {
-        id: userFound.id,
         name: userFound.name,
         email: userFound.email,
       };

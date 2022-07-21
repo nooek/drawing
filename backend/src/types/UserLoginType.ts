@@ -4,7 +4,6 @@ export type LoginInfoType = {
 };
 
 export type LoginReturn = {
-  id: string;
   name: string;
   email: string;
 }
