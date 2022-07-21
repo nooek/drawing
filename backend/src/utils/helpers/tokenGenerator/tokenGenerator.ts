@@ -14,6 +14,8 @@ export default class TokenGenerator implements TokenGeneratorInterface {
   decode(token: string) {
     const decoded: LoginReturn = jwt_decode(token)
 
+    console.log(token)
+
     if (decoded) return decoded
     throw new Error("Token couldn't be decoded")
   }

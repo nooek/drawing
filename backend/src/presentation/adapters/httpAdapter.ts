@@ -19,12 +19,13 @@ export default class HttpAdapter {
         .then((httpResponse: any) => {
           res.status(httpResponse.statusCode).json(httpResponse.body);
         })
-        .catch((e: Error) =>
+        .catch((e: Error) => {
+          console.log(e)
           res.status(500).json({
             errorMsg: "An error occurred.",
             error: e,
-          }),
-        );
+          })
+        })
     };
   }
 }

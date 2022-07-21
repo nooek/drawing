@@ -4,7 +4,7 @@ import LoginController from "./loginController/loginController";
 import AuthController from "./authController/authController";
 
 const loginController = new LoginController(loginUsecase, InvalidParamError)
-const authController = new AuthController(loginUsecase)
+const authController = new AuthController(authUsecase)
 
 export {
   loginController,

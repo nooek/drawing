@@ -22,7 +22,11 @@ export default class AuthUsecase {
         })
       }
 
+      console.log(token)
+
       const userInfoFromToken = this.tokenGenerator.decode(token)
+
+      console.log(userInfoFromToken)
 
       const userFound = await this.userDb.findByEmail(userInfoFromToken.email)
       

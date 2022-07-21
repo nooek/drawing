@@ -32,13 +32,15 @@ const AuthProvider = ({ children }: any) => {
 
   const isAuthenticated = !!user;
 
-//   useEffect(() => {
-//     const { 'drawingauth.token': token } = parseCookies()
+  useEffect(() => {
+    const { 'drawingauth.token': token } = parseCookies()
 
-//     if (token) {
-//       //
-//     }
-//   }, [])
+    if (token) {
+      api.get("/user/auth").then((res) => {
+        console.log(res)
+      }).catch(e => console.log(e))
+    }
+  }, [])
 
   const login = async ({ email, password }: LoginData): Promise<string> => {
     try {

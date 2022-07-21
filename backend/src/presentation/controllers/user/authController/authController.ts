@@ -7,15 +7,17 @@ export default class AuthController {
 
   async route(httpRequest: any) {
     try {
-      const { Authorization } = httpRequest.req.header;
+      const authorization = httpRequest.req.headers["authorization"];
 
-      const user = await this.authUsecase.execute(Authorization);
+      console.log(authorization)
+      const user = await this.authUsecase.execute(authorization);
 
       return {
         statusCode: 200,
         body: user,
       };
     } catch (e: any) {
+      console.log(e)
       return {
         statusCode: e.statusCode ? e.statusCode : 500,
         body: e.body ? e.body : e,
