@@ -42,7 +42,7 @@ const Register = () => {
   return (
     <Container>
       <RegisterText>Register</RegisterText>
-      <FormsContainer>
+      <FormsContainer messageExists={message ? true : false}>
         <InputsContainer>
           <FormsInput 
             placeholder="Name" 

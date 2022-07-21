@@ -20,13 +20,17 @@ export const RegisterText = styled.h1`
   }
 `
 
-export const FormsContainer = styled.div`
+interface FormsContainerI {
+  messageExists: boolean
+}
+export const FormsContainer = styled.div<FormsContainerI>`
   width: 500px;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: ${props => props.messageExists ? "30px" : null};
   @media(max-width: 580px) {
     width: 95%;
   }
@@ -82,7 +86,6 @@ export const RegisterButton = styled.button`
 export const Message = styled.h2 `
   font-size: 30px;
   color: white;
-  margin-top: 30px;
   @media(max-width: 580px) {
     font-size: 6vw;
   }
