@@ -37,10 +37,12 @@ const AuthProvider = ({ children }: any) => {
 
     if (token) {
       api.get("/user/auth").then((res) => {
-        console.log(res)
+        setUser(res.data.returnData)
       }).catch(e => console.log(e))
     }
   }, [])
+
+  console.log(user)
 
   const login = async ({ email, password }: LoginData): Promise<string> => {
     try {
@@ -51,8 +53,6 @@ const AuthProvider = ({ children }: any) => {
         }
       }) as { data: AxiosLoginResponseType }
       
-      console.log(data)
-
       setCookie(undefined, 'drawingauth.token', data.token, {
         maxAge: 60 * 60 * 72 // 3 days
       })
