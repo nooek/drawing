@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import axios from "axios"
 import { 
   Container,
@@ -9,6 +9,7 @@ import {
   RegisterButton,
   Message
 } from "../styles/registerPageStyles"
+import { AuthContext } from "../contexts/AuthContext";
 
 type LoginForms = {
   email: string;
@@ -22,21 +23,12 @@ const Login = () => {
   })
   const [blockButton, setBlockButton] = useState<boolean>(false)
   const [message, setMessage] = useState<string>("")
+  const { login } = useContext(AuthContext)
   
-  const login = () => {
-    setBlockButton(true)
-    axios.post("http://localhost:8888/user/login", {
-      loginInfo: formsData
-    }).then(res => {
-      if (res.status === 200) {
-        console.log(res)
-        setMessage("")
-        setBlockButton(false)
-      }
-    }).catch(err => {
-      if (err.response.data.message !== message) setMessage(err.response.data.message)
-      setBlockButton(false)
-    })
+  const handleLogin = async () => {
+    const response = await login(formsData)
+    console.log(response)
+    setMessage(response)
   }
 
   return (
@@ -54,7 +46,7 @@ const Login = () => {
             onChange={(e) => setFormsData({...formsData, password: e.target.value})}
           />
         </InputsContainer>
-        <RegisterButton onClick={() => login()}>Login</RegisterButton>
+        <RegisterButton disabled={blockButton} onClick={() => handleLogin()}>Login</RegisterButton>
       </FormsContainer>
       {
         message ? <Message>{message}</Message> : null
