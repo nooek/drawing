@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Container } from '../styles/home/homePageStyles'
 import { parseCookies } from 'nookies'
+import DesktopNavbar from '../components/navbars/desktopNavbar'
 
 const Home: NextPage = () => {
   return (
@@ -16,7 +17,7 @@ const Home: NextPage = () => {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Noto+Sans&family=Roboto&family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet" />
       </Head>
-      <h2>home</h2>
+      <DesktopNavbar />
     </Container>
   )
 }
