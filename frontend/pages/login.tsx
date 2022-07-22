@@ -8,7 +8,7 @@ import {
   FormsInput,
   RegisterButton,
   Message
-} from "../styles/registerPageStyles"
+} from "../styles/register/registerPageStyles"
 import { AuthContext } from "../contexts/AuthContext";
 
 type LoginForms = {

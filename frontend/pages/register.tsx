@@ -8,7 +8,7 @@ import {
   FormsInput,
   LoginButton,
   Message
-} from "../styles/loginPageStyles"
+} from "../styles/login/loginPageStyles"
 
 type RegisterForms = {
   name: string;
