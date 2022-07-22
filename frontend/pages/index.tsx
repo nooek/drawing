@@ -1,8 +1,9 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import { Container } from '../styles/home/homePageStyles'
+import { parseCookies } from 'nookies'
 
 const Home: NextPage = () => {
   return (
@@ -18,6 +19,23 @@ const Home: NextPage = () => {
       <h2>home</h2>
     </Container>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const { 'drawingauth.token': token } = parseCookies(ctx)
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false
+      }
+    }
+  }
+
+  return {
+    props: {}
+  }
 }
 
 export default Home
