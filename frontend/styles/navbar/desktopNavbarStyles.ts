@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid black;
-  position: absolute;
+  position: sticky;
   top: 0;
   font-family: 'Roboto', sans-serif;
 `

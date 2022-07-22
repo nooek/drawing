@@ -1,8 +1,10 @@
 import type { NextPage, GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-import { Container } from '../styles/home/homePageStyles'
+import { 
+  Container,
+  GeneralContainer
+} from '../styles/home/homePageStyles'
 import { parseCookies } from 'nookies'
 import DesktopNavbar from '../components/navbars/desktopNavbar'
 
@@ -18,6 +20,7 @@ const Home: NextPage = () => {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Noto+Sans&family=Roboto&family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet" />
       </Head>
       <DesktopNavbar />
+      <GeneralContainer></GeneralContainer>
     </Container>
   )
 }
