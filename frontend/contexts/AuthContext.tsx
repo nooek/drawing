@@ -61,7 +61,7 @@ const AuthProvider = ({ children }: any) => {
       
       setUser(data.responseData)
 
-      Router.push("/register")
+      Router.push("/")
       return ""
     }catch(err: any) {
       return err.response.data.message
