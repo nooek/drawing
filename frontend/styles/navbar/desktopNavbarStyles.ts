@@ -21,12 +21,18 @@ export const TitleContainer = styled.div`
   justify-content: space-around;
   text-align: center;
   margin-left: 20px;
+  @media(max-width: 430px) {
+    margin-left: 10px;
+  }
 `
 
 export const Title = styled.h2`
   color: #320d4f;
   font-size: 35px;
   font-family: 'Noto-Sans', sans-serif;
+  @media(max-width: 430px) {
+    font-size: 30px;
+  }
 `
 
 export const RightSideContainer = styled.div`

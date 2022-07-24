@@ -16,7 +16,7 @@ const Canvas = ({ color }: Props) => {
 
   useEffect(() => {
     console.log(prepareCanvas)
-    prepareCanvas({ color: "red", width: 2 }, { width: 400, height: 400 })
+    prepareCanvas({ color: color, width: 2 }, { width: 400, height: 400 })
   }, [])
 
   return (

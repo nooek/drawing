@@ -3,13 +3,21 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { 
   Container,
-  GeneralContainer
+  GeneralContainer,
+  WelcomeContainer,
+  WelcomeText,
+  WelcomePfp
 } from '../styles/home/homePageStyles'
 import { parseCookies } from 'nookies'
 import DesktopNavbar from '../components/navbars/desktopNavbar'
 import Canvas from '../components/canva/canvas'
+import boy1Icon from "../public/images/avatars/boy_avatar1.png"
+import { useContext } from 'react'
+import { AuthContext } from '../contexts/AuthContext'
 
 const Home: NextPage = () => {
+  const { user } = useContext(AuthContext)
+
   return (
     <Container>
       <Head>
@@ -21,8 +29,13 @@ const Home: NextPage = () => {
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Noto+Sans&family=Roboto&family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet" />
       </Head>
       <DesktopNavbar />
-      <GeneralContainer></GeneralContainer>
-      <Canvas color="yellow" />
+      <GeneralContainer>
+        <WelcomeContainer>
+          <WelcomeText>Welcome {user ? user.name : ""}!</WelcomeText>
+          <WelcomePfp src={boy1Icon.src} />
+        </WelcomeContainer>
+      </GeneralContainer>
+      {/* <Canvas color="yellow" /> */}
     </Container>
   )
 }

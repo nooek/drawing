@@ -16,4 +16,32 @@ export const GeneralContainer = styled.div`
   border: 1px solid yellow;
 `
 
+export const WelcomeContainer = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
+  text-align: center;
+`
+
+export const WelcomeText = styled.h2`
+  font-size: 55px;
+  color: #320d4f;
+  @media(max-width: 480px) {
+    font-size: 12vw;
+  }
+  @media(max-width: 350px) {
+    font-size: 45px;
+  }
+`
+
+export const WelcomePfp = styled.img`
+  height: 280px;
+  @media(max-width: 480px) {
+    height: 200px;
+  }
+`
 
