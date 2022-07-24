@@ -7,7 +7,7 @@ import {
 } from '../styles/home/homePageStyles'
 import { parseCookies } from 'nookies'
 import DesktopNavbar from '../components/navbars/desktopNavbar'
-import Canva from '../components/canva/canva'
+import Canvas from '../components/canva/canvas'
 
 const Home: NextPage = () => {
   return (
@@ -20,9 +20,9 @@ const Home: NextPage = () => {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Noto+Sans&family=Roboto&family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet" />
       </Head>
-      {/* <DesktopNavbar />
-      <GeneralContainer></GeneralContainer> */}
-      <Canva width={500} height={300} />
+      <DesktopNavbar />
+      <GeneralContainer></GeneralContainer>
+      <Canvas color="yellow" />
     </Container>
   )
 }

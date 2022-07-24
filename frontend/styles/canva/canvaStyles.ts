@@ -21,7 +21,6 @@ export const CanvaContainer = styled.div<CanvaContainerI>`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  border: 1px solid white;
   position: relative;
 `
 
@@ -30,13 +29,11 @@ interface CanvaPixelsI {
   y: number
 }
 
-export const CanvaPixels = styled.div<CanvaPixelsI>`
-  width: 5px;
-  height: 5px;
+export const CanvaPixels = styled.div`
+  width: 10px;
+  height: 10px;
+  /* border-radius: 5px; */
   border: 0.1px solid black;
   background: black;
-  position: absolute;
-  left: ${props => `${props.x}px`};
-  top: ${props => `${props.y}px`};
 `
 
