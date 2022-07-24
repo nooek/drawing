@@ -6,7 +6,11 @@ import {
   GeneralContainer,
   WelcomeContainer,
   WelcomeText,
-  WelcomePfp
+  WelcomePfp,
+  ActionsContainer,
+  ActionContainer,
+  ActionTitle,
+  ActionButton
 } from '../styles/home/homePageStyles'
 import { parseCookies } from 'nookies'
 import DesktopNavbar from '../components/navbars/desktopNavbar'
@@ -34,6 +38,16 @@ const Home: NextPage = () => {
           <WelcomeText>Welcome {user ? user.name : ""}!</WelcomeText>
           <WelcomePfp src={boy1Icon.src} />
         </WelcomeContainer>
+        <ActionsContainer>
+          <ActionContainer>
+            <ActionTitle>Create a new match</ActionTitle>
+            <ActionButton>Create</ActionButton>
+          </ActionContainer>
+          <ActionContainer>
+            <ActionTitle>Enter in a match</ActionTitle>
+            <ActionButton>Enter</ActionButton>
+          </ActionContainer>
+        </ActionsContainer>
       </GeneralContainer>
       {/* <Canvas color="yellow" /> */}
     </Container>

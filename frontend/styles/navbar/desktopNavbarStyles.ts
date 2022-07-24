@@ -11,6 +11,8 @@ export const Container = styled.div`
   position: sticky;
   top: 0;
   font-family: 'Roboto', sans-serif;
+  z-index: 10;
+  background: #4381C1;
 `
 
 export const TitleContainer = styled.div`
@@ -27,7 +29,7 @@ export const TitleContainer = styled.div`
 `
 
 export const Title = styled.h2`
-  color: #320d4f;
+  color: black;
   font-size: 35px;
   font-family: 'Noto-Sans', sans-serif;
   @media(max-width: 430px) {
