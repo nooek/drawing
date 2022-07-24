@@ -1,5 +1,6 @@
-import { Table, Column, Model, PrimaryKey, AllowNull, Length, DataType } from "sequelize-typescript"
+import { Table, Column, Model, PrimaryKey, AllowNull, Length, DataType, HasMany } from "sequelize-typescript"
 import UserAttributes from "../types/UserType";
+import Match from "./MatchModel";
 
 @Table
 class User extends Model<UserAttributes> {
@@ -21,6 +22,9 @@ class User extends Model<UserAttributes> {
   @AllowNull(false)
   @Column({type: DataType.STRING})
   password!: string;
+
+  @HasMany(() => Match)
+  matchs!: Match[]
 }
 
 export default User

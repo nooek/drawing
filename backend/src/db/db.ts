@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize-typescript'
+import Match from '../models/MatchModel';
 import User from '../models/UserModel';
 
 const sequelize = new Sequelize({
@@ -7,7 +8,7 @@ const sequelize = new Sequelize({
   username: process.env.DB_USER as string,
   password: "",
   storage: ":memory:",
-  models: [User]
+  models: [User, Match]
 })
 
 const verifyConnection = async () => {
