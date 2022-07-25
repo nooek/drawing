@@ -35,7 +35,7 @@ const Home: NextPage = () => {
       <DesktopNavbar />
       <GeneralContainer>
         <WelcomeContainer>
-          <WelcomeText>Welcome {user ? user.name : ""}!</WelcomeText>
+          <WelcomeText>Welcome {user.name}!</WelcomeText>
           <WelcomePfp src={boy1Icon.src} />
         </WelcomeContainer>
         <ActionsContainer>

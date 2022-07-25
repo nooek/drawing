@@ -16,7 +16,7 @@ type LoginData = {
 
 type AuthContextType = {
   isAuthenticated: boolean;
-  user: User | null;
+  user: User;
   login: (data: LoginData) => Promise<string>
 }
 
@@ -28,15 +28,24 @@ type AxiosLoginResponseType = {
 export const AuthContext = createContext({} as AuthContextType)
 
 const AuthProvider = ({ children }: any) => {
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<User>({ name: "", email: "" })
 
   const isAuthenticated = !!user;
 
+  const checkRedirect = (): boolean => {
+    const path = window.location.pathname
+    console.log(path)
+    if (path === "/register" || path === "/login") return false
+    return true
+  }
+
   useEffect(() => {
     const { 'drawingauth.token': token } = parseCookies()
-
     if (token) {
       api.get("/user/auth").then((res) => {
+        const redirect = checkRedirect()
+        console.log(redirect)
+        if (res.data.returnData.email === null && redirect) return Router.push("/login")
         setUser(res.data.returnData)
       }).catch(e => console.log(e))
     }
@@ -52,6 +61,8 @@ const AuthProvider = ({ children }: any) => {
           password: password
         }
       }) as { data: AxiosLoginResponseType }
+
+      console.log(data)
       
       setCookie(undefined, 'drawingauth.token', data.token, {
         maxAge: 60 * 60 * 72 // 3 days
@@ -59,12 +70,17 @@ const AuthProvider = ({ children }: any) => {
 
       api.defaults.headers.common.Authorization = `Bearer ${data.token}`
       
-      setUser(data.responseData)
+      await setUser(data.responseData)
 
-      Router.push("/")
+      console.log(user !== null)
+
+      if (user !== undefined) Router.push("/")
+  
       return ""
     }catch(err: any) {
-      return err.response.data.message
+      console.log(err)
+      if (err.response) return err.response.data.message
+      return "Some error happened"
     }
   }
 
