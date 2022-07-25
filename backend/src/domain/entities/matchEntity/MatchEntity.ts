@@ -1,4 +1,5 @@
 import { prepareOptions } from "sequelize-typescript";
+import MatchReturnI from "../../../interfaces/domain/entities/matchEntity";
 import MatchI from "../../../interfaces/models/matchInterface";
 
 export default class Match {
@@ -12,7 +13,7 @@ export default class Match {
     this.MissingParamError = MissingParamError;
   }
 
-  public create(props: MatchI) {
+  public create(props: MatchI): MatchReturnI {
     if (!props.category) {
       throw new this.MissingParamError({
         statusCode: 400,
@@ -88,7 +89,7 @@ export default class Match {
       getPassword: () => props.password,
       getCategory: () => props.category,
       getMaxPlayers: () => props.maxPlayers,
-      creatorId: () => props.creatorId
+      getCreatorId: () => props.creatorId
     }
   }
 }

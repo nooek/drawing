@@ -1,6 +1,6 @@
 import LoginUsecase from "../../../../main/usecases/user/login/loginUsecase";
 import { mockFindByEmail } from "../../../../mocks/infra/user/userDbMock";
-import { mockGenerate } from "../../../../mocks/helpers/tokenGeneratorMock";
+import { mockGenerate, mockDecode } from "../../../../mocks/helpers/tokenGeneratorMock";
 import { mockCompare, mockHash } from "../../../../mocks/helpers/hashPasswordMock";
 import { MissingParamError } from "../../../../utils/errors";
 import { InvalidParamError, UnauthorizedError } from "../../../../utils/errors";
