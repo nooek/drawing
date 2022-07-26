@@ -1,13 +1,7 @@
 import { mockCreate } from "../../../../mocks/infra/user/userDbMock";
-import loginUsecaseMock from "../../../../mocks/main/usecases/user/loginUsecase";
+import loginUsecaseMock, { mockRoute } from "../../../../mocks/presentation/controllers/user/loginControllerMock";
 import { InvalidParamError } from "../../../../utils/errors";
 import LoginController from "./loginController";
-
-const makeSut = () => {
-  const sut = new LoginController(loginUsecaseMock, InvalidParamError);
-
-  return sut;
-};
 
 const makeNewUser = () => {
   const userData = {
@@ -21,6 +15,12 @@ const makeNewUser = () => {
 };
 
 describe("Test login controller", () => {
+
+  beforeEach(() => {
+    mockRoute.mockClear()
+    loginUsecaseMock.mockClear()
+  })
+
   it("should return a status code 200", async () => {
     const body = {
       body: {
@@ -31,26 +31,24 @@ describe("Test login controller", () => {
       },
     };
     makeNewUser();
-    const sut = makeSut();
-    const response = await sut.route(body);
+    const response = mockRoute(body);
 
     expect(response.statusCode).toBe(200);
   });
 
-  it("should throw for invalid data format", async () => {
+  it("should throw for invalid data format", () => {
     const body = {
       body: {
         email: "example@gmail.com",
         password: "fakepassword123",
       },
     };
-    const sut = makeSut();
-    const response = await sut.route(body);
+    const response = mockRoute(body);
 
     expect(response.statusCode).toBe(400);
   });
 
-  it("should throw for inexistent email", async () => {
+  it("should throw for inexistent email", () => {
     const body = {
       body: {
         loginInfo: {
@@ -58,13 +56,12 @@ describe("Test login controller", () => {
         },
       },
     };
-    const sut = makeSut();
-    const response = await sut.route(body);
+    const response = mockRoute(body);
 
     expect(response.statusCode).toBe(400);
   });
 
-  it("should throw for inexistent password", async () => {
+  it("should throw for inexistent password", () => {
     const body = {
       body: {
         loginInfo: {
@@ -72,8 +69,7 @@ describe("Test login controller", () => {
         },
       },
     };
-    const sut = makeSut();
-    const response = await sut.route(body);
+    const response = mockRoute(body);
 
     expect(response.statusCode).toBe(400);
   });

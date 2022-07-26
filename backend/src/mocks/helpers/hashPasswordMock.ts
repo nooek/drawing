@@ -1,8 +1,8 @@
-export const mockHash = jest.fn(async (password: string) => {
+export const mockHash = jest.fn((password: string) => {
   return "hash" + password;
 });
 
-export const mockCompare = jest.fn(async (password: string, hashPassword: string) => {
+export const mockCompare = jest.fn((password: string, hashPassword: string) => {
   if (password === hashPassword) return true;
   console.log(password, hashPassword);
   return false;

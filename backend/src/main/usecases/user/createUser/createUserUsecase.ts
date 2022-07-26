@@ -53,7 +53,6 @@ export default class CreateUserUsecase {
     if (createdUser instanceof Error) return createdUser
 
     return {
-      message: "Success",
       statusCode: 200,
       body: {
         id: userEntity.getId(),

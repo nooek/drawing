@@ -27,40 +27,36 @@ export default class LoginUsecase implements LoginInterface {
   }
 
   async execute(loginInfo: LoginInfoType) {
-    if (!loginInfo.email)
-      throw new this.MissingParamError({
-        statusCode: 400,
-        body: {
-          message: "Email not provided",
-        },
-      });
+    if (!loginInfo.email) return new this.MissingParamError({ message: "Email not provided" }, 400);
+
     if (!loginInfo.password)
-      throw new this.MissingParamError({
-        statusCode: 400,
-        body: {
+      return new this.MissingParamError(
+        {
           message: "Password not provided",
         },
-      });
+        400,
+      );
 
     const userFound = await this.userDb.findByEmail(loginInfo.email);
     if (userFound.id === null) {
-      return new this.InvalidParamError({
-        statusCode: 400,
-        body: {
+      return new this.InvalidParamError(
+        {
           message: "User not found",
         },
-      });
+        400,
+      );
     }
+    if (userFound instanceof Error) return userFound;
 
     const isPasswordSame = await this.encrypter.compare(loginInfo.password, userFound.password);
     console.log(isPasswordSame);
     if (!isPasswordSame) {
-      throw new this.UnauthorizedError({
-        statusCode: 401,
-        body: {
+      return new this.UnauthorizedError(
+        {
           message: "Email/Password incorrect",
         },
-      });
+        401,
+      );
     }
 
     const returnData = {
@@ -69,8 +65,11 @@ export default class LoginUsecase implements LoginInterface {
     };
     const token = this.tokenGenerator.generate(returnData);
     return {
-      returnData,
-      token: token,
+      statusCode: 200,
+      body: {
+        returnData,
+        token: token,
+      },
     };
   }
 }

@@ -1,30 +1,28 @@
 import LoginInterface from "../../../../interfaces/main/usecases/user/loginInterface";
 
 export default class LoginController {
-  private loginUsecase: LoginInterface;
-  private invalidParamError: any;
+  private loginUsecase: any;
+  private missingParamError: any;
 
-  constructor(loginUsecase: LoginInterface, invalidParamError: any) {
+  constructor(loginUsecase: any, missingParamError: any) {
     this.loginUsecase = loginUsecase;
-    this.invalidParamError = invalidParamError
+    this.missingParamError = missingParamError
   }
 
   async route(httpRequest: any) {
     try {
       const { body } = httpRequest;
-      if (!body.loginInfo) {
-        throw new this.invalidParamError({
-          statusCode: 400,
-          body: {
+  
+      if (!body) {
+        return new this.missingParamError({
             message: "Login info not provided"
-          }
-        })
+        }, 400)
       }
       const user = await this.loginUsecase.execute(body.loginInfo);
 
       return {
-        statusCode: 200,
-        body: user,
+        statusCode: user.statusCode,
+        body: user.body
       };
     } catch (e: any) {
       console.log(e);
