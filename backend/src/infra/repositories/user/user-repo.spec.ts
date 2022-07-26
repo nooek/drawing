@@ -4,6 +4,7 @@ import UserRepoMock, {
   createdUsers,
 } from "../../../mocks/infra/user/userDbMock";
 import UserRepo from "./userRepo"
+import UserAttributes from "../../../types/UserType";
 
 jest.mock("./userRepo.ts", () => {
   return jest.fn().mockImplementation(() => {
@@ -34,9 +35,8 @@ describe("Test user repository", () => {
       password: "fakepassword123",
     };
     const sut = makeSut()
-    const userCreated = await sut.create(user)
-    expect(mockCreate).toHaveBeenCalledWith(user);
-    expect(userCreated.email).toBe(user.email);
+    const userCreated = sut.create(user)
+    expect(mockCreate(user)).toStrictEqual(user);
   });
 
   it("Should not create a new user without password", () => {
@@ -45,8 +45,7 @@ describe("Test user repository", () => {
       name: "fake_name",
       email: "example@gmail.com",
     };
-
-    expect(() => mockCreate(user)).toThrowError();
+    expect(mockCreate(user)).toHaveProperty('statusCode', 500);
   });
 
   it("Should not create a new user without email", () => {
@@ -56,7 +55,7 @@ describe("Test user repository", () => {
       password: "fakepassword123",
     };
 
-    expect(() => mockCreate(user)).toThrowError();
+    expect(mockCreate(user)).toHaveProperty('statusCode', 500);
   });
 
   it("Should not create a new user without name", () => {
@@ -66,7 +65,7 @@ describe("Test user repository", () => {
       password: "fakepassword123",
     };
 
-    expect(() => mockCreate(user)).toThrowError();
+    expect(mockCreate(user)).toHaveProperty('statusCode', 500);
   });
 
   it("Should not create a new user without id", () => {
@@ -76,7 +75,12 @@ describe("Test user repository", () => {
       password: "fakepassword123",
     };
 
-    expect(() => mockCreate(user)).toThrowError();
+    expect(mockCreate(user)).toHaveProperty('statusCode', 500);
+  });
+
+  it("Should not find a user without email", async () => {
+
+    expect(mockFindByEmail()).toHaveProperty('statusCode', 500);
   });
 
   it("Should find a user by email", async () => {
@@ -88,9 +92,9 @@ describe("Test user repository", () => {
     };
     const sut = makeSut()
 
-    await sut.create(user);
-    const foundUser = await sut.findByEmail(user.email);
-    expect(foundUser.email).toBe(user.email);
+    await mockCreate(user)
+    const foundUser = await mockFindByEmail(user.email);
+    expect(foundUser).toStrictEqual(user);
   });
 
   it("Should not find a user by email", async () => {
@@ -102,6 +106,6 @@ describe("Test user repository", () => {
     };
     const sut = makeSut()
     const foundUser = await sut.findByEmail(user.email)
-    expect(foundUser.email).toBeNull();
+    expect(foundUser).toBeNull();
   });
 });

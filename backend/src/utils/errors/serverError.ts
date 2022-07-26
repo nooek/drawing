@@ -1,12 +1,10 @@
-import ErrorAttributes from "../../types/ErrorType"
+import BaseResponseI, { body } from "../../interfaces/helpers/baseResponseInterface"
+export default class ServerError extends Error implements BaseResponseI {
+  body: body = { message: "An error occured. "};
+  statusCode: number;
 
-export default class ServerError extends Error {
-  public body: any;
-  public statusCode: number;
-
-  constructor(props: ErrorAttributes) {
+  constructor(statusCode: number) {
     super("Server error")
-    this.statusCode = props.statusCode ? props.statusCode : 500;
-    this.body = props.body ? props.body : { message: "An error ocurred." };
+    this.statusCode = statusCode | 500;
   }
 }

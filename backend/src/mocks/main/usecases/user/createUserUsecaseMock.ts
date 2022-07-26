@@ -1,45 +1,41 @@
 import { user } from "../../../../domain/entities";
+import { MissingParamError, UnauthorizedError } from "../../../../utils/errors";
 import { mockCreate, mockFindByEmail } from "../../../infra/user/userDbMock";
 
-export const mockExecute = jest.fn(async (userData) => {
-  try {
-    if (!userData.id) throw new Error();
-    if (!userData.name) throw new Error();
-    if (!userData.email) throw new Error();
-    if (!userData.password) throw new Error();
+export const mockExecute = jest.fn((userData) => {
+  if (!userData.id) return new MissingParamError({ message: "x" }, 400);
+  if (!userData.name) return new MissingParamError({ message: "x" }, 400);
+  if (!userData.email) return new MissingParamError({ message: "x" }, 400);
+  if (!userData.password) return new MissingParamError({ message: "x" }, 400);
 
-    const userEntity = await user.create({
-      id: userData.id,
-      name: userData.name,
-      email: userData.email,
-      password: userData.password,
-    });
+  const userEntity = user.create({
+    id: userData.id,
+    name: userData.name,
+    email: userData.email,
+    password: userData.password,
+  });
+  if (userEntity instanceof Error) return userEntity
 
-    const userExists = await mockFindByEmail(userData.email);
-    console.log(userExists)
-    if (userExists.id !== null) throw new Error();
+  const userExists = mockFindByEmail(userData.email);
+  console.log(userExists);
+  if (userExists !== null) return new UnauthorizedError({ message: "x" }, 401);
 
-    mockFindByEmail.mockClear()
+  mockFindByEmail.mockClear();
 
-    return {
-      message: "Success",
-      statusCode: 200,
-      user: {
-        id: userEntity.getId(),
-        name: userEntity.getName(),
-        email: userEntity.getEmail()
-      },
-    };
-  } catch (e) {
-    console.log(e)
-    throw new Error();
+  return {
+    statusCode: 200,
+    body: {
+      id: userEntity.getId(),
+      name: userEntity.getName(),
+      email: userEntity.getEmail(),
+    }
   }
 });
 
 const mock = jest.fn().mockImplementation(() => {
   return {
-    execute: mockExecute
+    execute: mockExecute,
   };
 });
 
-export default mock
+export default mock;

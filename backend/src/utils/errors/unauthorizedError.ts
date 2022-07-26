@@ -1,12 +1,11 @@
-import ErrorAttributes from "../../types/ErrorType"
+import BaseResponseI, { body } from "../../interfaces/helpers/baseResponseInterface"
+export default class UnauthorizedError extends Error implements BaseResponseI {
+  body: body;
+  statusCode: number;
 
-export default class UnauthorizedError extends Error {
-  public body: any;
-  public statusCode: number;
-
-  constructor(props: ErrorAttributes) {
-    super("Unauthorized error")
-    this.statusCode = props.statusCode ? props.statusCode : 403;
-    this.body = props.body;
+  constructor(body: body, statusCode: number) {
+    super("Unauthorized Error")
+    this.body = body;
+    this.statusCode = statusCode | 400;
   }
 }

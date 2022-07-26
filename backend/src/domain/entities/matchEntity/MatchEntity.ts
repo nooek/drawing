@@ -64,6 +64,7 @@ export default class Match {
     }
 
     if (props.name.length < 2 || props.name.length > 20) {
+      
       throw new this.InvalidParamError({
         statusCode: 400,
         body: {

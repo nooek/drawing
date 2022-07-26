@@ -34,10 +34,10 @@ describe("Test the create user controller", () => {
     const sut = makeSut();
     const response = await sut.route(body);
 
-    expect(response.statusCode).toBe(200);
+    expect(response).toHaveProperty("statusCode", 200);
   });
 
-  it("should throw for invalid data format", () => {
+  it("should throw for invalid data format", async () => {
     const body = {
       id: "fake_id",
       name: "fake_name",
@@ -45,56 +45,72 @@ describe("Test the create user controller", () => {
       password: "fakepassword123",
     };
     const sut = makeSut();
-    const response = sut.route(body);
+    const response = await sut.route(body);
 
-    expect(response).rejects.toThrowError();
+    expect(response).toHaveProperty("statusCode", 400);
   });
 
-  it("should throw for not having an id", () => {
+  it("should throw for not having an id", async () => {
     const body = {
-      name: "fake_name",
-      email: "example@gmail.com",
-      password: "fakepassword123",
+      body: {
+        userData: {
+          name: "fake_name",
+          email: "example@gmail.com",
+          password: "fakepassword123",
+        },
+      },
     };
     const sut = makeSut();
-    const response = sut.route(body);
+    const response = await sut.route(body);
 
-    expect(response).rejects.toThrowError();
+    expect(response).toHaveProperty("statusCode", 400);
   });
 
-  it("should throw for not having a name", () => {
+  it("should throw for not having a name", async () => {
     const body = {
-      id: "fake_id",
-      email: "example@gmail.com",
-      password: "fakepassword123",
+      body: {
+        userData: {
+          id: "fake_id",
+          email: "example@gmail.com",
+          password: "fakepassword123",
+        },
+      },
     };
     const sut = makeSut();
-    const response = sut.route(body);
+    const response = await sut.route(body);
 
-    expect(response).rejects.toThrowError();
+    expect(response).toHaveProperty("statusCode", 400);
   });
 
-  it("should throw for not having an email", () => {
+  it("should throw for not having an email", async () => {
     const body = {
-      id: "fake_id",
-      name: "fake_name",
-      password: "fakepassword123",
+      body: {
+        userData: {
+          id: "fake_id",
+          name: "fake_name",
+          password: "fakepassword123",
+        },
+      },
     };
     const sut = makeSut();
-    const response = sut.route(body);
+    const response = await sut.route(body);
 
-    expect(response).rejects.toThrowError();
+    expect(response).toHaveProperty("statusCode", 400);
   });
 
-  it("should throw for not having a password", () => {
+  it("should throw for not having a password", async () => {
     const body = {
-      id: "fake_id",
-      name: "fake_name",
-      email: "example@gmail.com",
+      body: {
+        userData: {
+          id: "fake_id",
+          name: "fake_name",
+          email: "example@gmail.com",
+        },
+      },
     };
     const sut = makeSut();
-    const response = sut.route(body);
+    const response = await sut.route(body);
 
-    expect(response).rejects.toThrowError();
+    expect(response).toHaveProperty("statusCode", 400);
   });
 });

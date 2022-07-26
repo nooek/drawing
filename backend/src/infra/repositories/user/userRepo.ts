@@ -14,7 +14,7 @@ export default class UserRepo {
       user.save();
       return user;
     } catch (err) {
-      throw new ServerError({ statusCode: 500 });
+      return new ServerError(500);
     }
   }
 
@@ -22,14 +22,16 @@ export default class UserRepo {
     try {
       const user = await User.findOne({ where: { email: email } });
 
+      if (!user) return null
+
       return {
-        id: user ? user.id : null,
-        email: user ? user.email : null,
-        name: user ? user.name : null,
-        password: user ? user.password : null,
+        id: user.id,
+        email: user.email,
+        name: user.name,
+        password: user.password,
       };
     } catch (err) {
-      throw new ServerError({ statusCode: 500 });
+      return new ServerError(500);
     }
   }
 }

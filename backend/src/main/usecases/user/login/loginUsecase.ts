@@ -27,54 +27,50 @@ export default class LoginUsecase implements LoginInterface {
   }
 
   async execute(loginInfo: LoginInfoType) {
-    try {
-      if (!loginInfo.email)
-        throw new this.MissingParamError({
-          statusCode: 400,
-          body: {
-            message: "Email not provided",
-          },
-        });
-      if (!loginInfo.password)
-        throw new this.MissingParamError({
-          statusCode: 400,
-          body: {
-            message: "Password not provided",
-          },
-        });
+    if (!loginInfo.email)
+      throw new this.MissingParamError({
+        statusCode: 400,
+        body: {
+          message: "Email not provided",
+        },
+      });
+    if (!loginInfo.password)
+      throw new this.MissingParamError({
+        statusCode: 400,
+        body: {
+          message: "Password not provided",
+        },
+      });
 
-      const userFound = await this.userDb.findByEmail(loginInfo.email);
-      if (userFound.id === null) {
-        throw new this.InvalidParamError({
-          statusCode: 400,
-          body: {
-            message: "User not found",
-          },
-        });
-      }
-
-      const isPasswordSame = await this.encrypter.compare(loginInfo.password, userFound.password);
-      console.log(isPasswordSame)
-      if (!isPasswordSame) {
-        throw new this.UnauthorizedError({
-          statusCode: 401,
-          body: {
-            message: "Email/Password incorrect",
-          },
-        });
-      }
-
-      const returnData = {
-        name: userFound.name,
-        email: userFound.email,
-      };
-      const token = this.tokenGenerator.generate(returnData);
-      return {
-        returnData,
-        token: token,
-      };
-    } catch (err) {
-      throw err
+    const userFound = await this.userDb.findByEmail(loginInfo.email);
+    if (userFound.id === null) {
+      return new this.InvalidParamError({
+        statusCode: 400,
+        body: {
+          message: "User not found",
+        },
+      });
     }
+
+    const isPasswordSame = await this.encrypter.compare(loginInfo.password, userFound.password);
+    console.log(isPasswordSame);
+    if (!isPasswordSame) {
+      throw new this.UnauthorizedError({
+        statusCode: 401,
+        body: {
+          message: "Email/Password incorrect",
+        },
+      });
+    }
+
+    const returnData = {
+      name: userFound.name,
+      email: userFound.email,
+    };
+    const token = this.tokenGenerator.generate(returnData);
+    return {
+      returnData,
+      token: token,
+    };
   }
 }

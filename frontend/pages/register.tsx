@@ -30,10 +30,9 @@ const Register = () => {
     axios.post("http://localhost:8888/user", {
       userData: formsData
     }).then(res => {
-      if (res.data.statusCode === 200) {
-        setMessage("You can login now :)")
-        setBlockButton(false)
-      }
+      console.log(res)
+      setMessage("You can login now :)")
+      setBlockButton(false)
     }).catch(err => {
       if (err.response.data.message !== message) setMessage(err.response.data.message)
       setBlockButton(false)
@@ -57,6 +56,7 @@ const Register = () => {
           />
           <FormsInput 
             placeholder="Password"
+            type="password"
             onChange={(e) => setFormsData({...formsData, password: e.target.value})}
           />
         </InputsContainer>

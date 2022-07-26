@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">90.78% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>80/80</span>
+                <span class='fraction'>69/76</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">91.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>12/12</span>
+                <span class='fraction'>11/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">90.78% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>80/80</span>
+                <span class='fraction'>69/76</span>
             </div>
         
             
@@ -139,11 +139,7 @@
 <a name='L74'></a><a href='#L74'>74</a>
 <a name='L75'></a><a href='#L75'>75</a>
 <a name='L76'></a><a href='#L76'>76</a>
-<a name='L77'></a><a href='#L77'>77</a>
-<a name='L78'></a><a href='#L78'>78</a>
-<a name='L79'></a><a href='#L79'>79</a>
-<a name='L80'></a><a href='#L80'>80</a>
-<a name='L81'></a><a href='#L81'>81</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -172,7 +168,6 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -190,13 +185,13 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -218,10 +213,7 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import HashPasswordInterface from "../../../../interfaces/helpers/hashPasswordInterface";
 import TokenGeneratorInterface from "../../../../interfaces/helpers/tokenGeneratorInterface";
@@ -252,55 +244,51 @@ export default class LoginUsecase implements LoginInterface {
   }
 &nbsp;
   async execute(loginInfo: LoginInfoType) {
-    try {
-      if (!loginInfo.email)
-        throw new this.MissingParamError({
-          statusCode: 400,
-          body: {
-            message: "Email not provided",
-          },
-        });
-      if (!loginInfo.password)
-        throw new this.MissingParamError({
-          statusCode: 400,
-          body: {
-            message: "Password not provided",
-          },
-        });
+    if (!loginInfo.email)
+      throw new this.MissingParamError({
+        statusCode: 400,
+        body: {
+          message: "Email not provided",
+        },
+      });
+    if (!loginInfo.password)
+      throw new this.MissingParamError({
+        statusCode: 400,
+        body: {
+          message: "Password not provided",
+        },
+      });
 &nbsp;
-      const userFound = await this.userDb.findByEmail(loginInfo.email);
-      if (userFound.id === null) {
-        throw new this.InvalidParamError({
-          statusCode: 400,
-          body: {
-            message: "User not found",
-          },
-        });
-      }
+    const userFound = await this.userDb.findByEmail(loginInfo.email);
+    if (userFound.id === null) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >      return new this.InvalidParamError({</span>
+<span class="cstat-no" title="statement not covered" >        statusCode: 400,</span>
+<span class="cstat-no" title="statement not covered" >        body: {</span>
+<span class="cstat-no" title="statement not covered" >          message: "User not found",</span>
+<span class="cstat-no" title="statement not covered" >        },</span>
+<span class="cstat-no" title="statement not covered" >      });</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
 &nbsp;
-      const isPasswordSame = await this.encrypter.compare(loginInfo.password, userFound.password);
-      console.log(isPasswordSame)
-      if (!isPasswordSame) {
-        throw new this.UnauthorizedError({
-          statusCode: 401,
-          body: {
-            message: "Email/Password incorrect",
-          },
-        });
-      }
-&nbsp;
-      const returnData = {
-        name: userFound.name,
-        email: userFound.email,
-      };
-      const token = this.tokenGenerator.generate(returnData);
-      return {
-        returnData,
-        token: token,
-      };
-    } catch (err) {
-      throw err
+    const isPasswordSame = await this.encrypter.compare(loginInfo.password, userFound.password);
+    console.log(isPasswordSame);
+    if (!isPasswordSame) {
+      throw new this.UnauthorizedError({
+        statusCode: 401,
+        body: {
+          message: "Email/Password incorrect",
+        },
+      });
     }
+&nbsp;
+    const returnData = {
+      name: userFound.name,
+      email: userFound.email,
+    };
+    const token = this.tokenGenerator.generate(returnData);
+    return {
+      returnData,
+      token: token,
+    };
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -310,7 +298,7 @@ export default class LoginUsecase implements LoginInterface {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2022-07-25T15:26:37.131Z
+                at 2022-07-26T17:26:59.488Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

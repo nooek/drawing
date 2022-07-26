@@ -1,35 +1,40 @@
 import UserRepo from "../../../infra/repositories/user/userRepo";
+import { ServerError } from "../../../utils/errors";
 import Users from "./fakeDb"
 
 export const createdUsers = new Users([])
 
 export const mockCreate = jest.fn((userData) => {
-  if (!userData.id) throw new Error();
-  if (!userData.name) throw new Error();
-  if (!userData.email) throw new Error();
-  if (!userData.password) throw new Error();
-  console.log("Passou")
+  if (!userData.id) return new ServerError(500)
+  if (!userData.name) return new ServerError(500)
+  if (!userData.email) return new ServerError(500)
+  if (!userData.password) return new ServerError(500)
 
   const newUser = {
-    id: "fake_id",
+    id: userData.id,
     name: userData.name,
     email: userData.email,
     password: userData.password,
   };
 
   createdUsers.setUsers(newUser)
+  console.log(createdUsers)
   return newUser
 });
 
-export const mockFindByEmail = jest.fn((email: string) => {
-  if (!email) throw new Error()
+export const mockFindByEmail = jest.fn((email?: string) => {
+  if (!email) return new ServerError(500)
   
   const user = createdUsers.findByEmail(email)
+
+  if (!user[0]) return null
+  if (!user[0].id) return null
+
   return {
-    id: user.length ? user[0].id : null,
-    email: user.length ? user[0].email : null,
-    name: user.length ? user[0].name : null,
-    password: user.length ? user[0].password : null,
+    id: user[0].id,
+    email: user[0].email,
+    name: user[0].name,
+    password: user[0].password,
   };
 })
 
