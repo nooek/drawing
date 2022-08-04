@@ -1,6 +1,5 @@
-import UserRepo from "../../../infra/repositories/user/userRepo";
 import { ServerError } from "../../../utils/errors";
-import Users from "./fakeDb"
+import Users from "../mockDb"
 
 export const createdUsers = new Users([])
 
@@ -17,15 +16,14 @@ export const mockCreate = jest.fn((userData) => {
     password: userData.password,
   };
 
-  createdUsers.setUsers(newUser)
-  console.log(createdUsers)
+  createdUsers.setInstance(newUser)
   return newUser
 });
 
 export const mockFindByEmail = jest.fn((email?: string) => {
   if (!email) return new ServerError(500)
   
-  const user = createdUsers.findByEmail(email)
+  const user = createdUsers.find("email", email)
 
   if (!user[0]) return null
   if (!user[0].id) return null

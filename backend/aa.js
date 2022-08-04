@@ -1,20 +1,16 @@
-class BaseResponse {
-  constructor(body, statusCode) {
-    this.body = body
-    this.statusCode = statusCode;
+const list = [
+  {
+    name: "robso",
+    idade: 20
+  },
+  {
+    name: "rodolfo",
+    idade: 30
   }
+]
+
+const aaa = (param, string) => {
+  return list.filter(each => each[param] === string)
 }
 
-class Ok extends BaseResponse {
-  constructor(body, statusCode, responseData, message) {
-    super(body, statusCode)
-    this.statusCode = 200
-    this.body.data = responseData
-    this.body.message = message
-  }
-}
-
-const ok = new Ok({ data: "dsada" }, "pdslapd")
-
-console.log(ok instanceof BaseResponse)
-
+console.log(aaa("idade", 20))
