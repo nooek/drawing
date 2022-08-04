@@ -19,6 +19,7 @@ export default class LoginController {
         }, 400)
       }
       const user = await this.loginUsecase.execute(body.loginInfo);
+      console.log(user)
 
       return {
         statusCode: user.statusCode,

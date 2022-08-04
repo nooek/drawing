@@ -38,6 +38,7 @@ export default class LoginUsecase implements LoginInterface {
       );
 
     const userFound = await this.userDb.findByEmail(loginInfo.email);
+    if (userFound instanceof Error) return userFound;
     if (userFound.id === null) {
       return new this.InvalidParamError(
         {
@@ -46,10 +47,8 @@ export default class LoginUsecase implements LoginInterface {
         400,
       );
     }
-    if (userFound instanceof Error) return userFound;
 
     const isPasswordSame = await this.encrypter.compare(loginInfo.password, userFound.password);
-    console.log(isPasswordSame);
     if (!isPasswordSame) {
       return new this.UnauthorizedError(
         {
