@@ -33,7 +33,6 @@ export default class CreateUserUsecase {
     const hashedPassword = await this.hashPassword.hash(userEntity.getPassword());
 
     const userExists = await this.userDb.findByEmail(userData.email);
-
     if (userExists !== null) {
       return new this.UnauthorizedError(
         {
