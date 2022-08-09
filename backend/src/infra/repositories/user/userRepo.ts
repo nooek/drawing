@@ -5,13 +5,12 @@ import { ServerError } from "../../../utils/errors";
 export default class UserRepo {
   async create(userData: UserAttributes) {
     try {
-      const user = await User.build({
+      const user = await User.create({
         id: userData.id,
         name: userData.name,
         email: userData.email,
         password: userData.password,
       });
-      user.save();
       return user;
     } catch (err) {
       return new ServerError(500);

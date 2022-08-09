@@ -28,7 +28,6 @@ class Match extends Model implements MatchI {
   @Column({ type: DataType.STRING })
   name!: string;
 
-  @Length({ max: 18 })
   @AllowNull(true)
   @Column({ type: DataType.STRING })
   password!: string;

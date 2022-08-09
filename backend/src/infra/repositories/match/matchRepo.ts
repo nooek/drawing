@@ -5,7 +5,7 @@ import { ServerError } from "../../../utils/errors";
 export default class MatchRepo {
   async create(matchData: MatchI) {
     try {
-      const match = await Match.build({
+      const match = await Match.create({
         id: matchData.id,
         name: matchData.name,
         password: matchData.password,
@@ -13,7 +13,6 @@ export default class MatchRepo {
         maxPlayers: matchData.maxPlayers,
         creatorId: matchData.creatorId,
       })
-      match.save();
       return match
     }catch(err) {
       return new ServerError(500)
