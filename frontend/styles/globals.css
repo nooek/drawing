@@ -16,12 +16,13 @@ html {
 html,
 body,
 body > div,
+.chakra-ui-light,
 #__next,
 div#__next,
 div#__next > div {
   padding: 0;
   margin: 0;
-  overflow: auto;
+  overflow: hidden;
   min-height: -webkit-fill-available;
   min-height: 100vh !important;
   height: 100vh !important;

@@ -1,6 +1,11 @@
+import { builtinModules } from "module";
 import styled from "styled-components";
 
-export const Container = styled.div`
+interface ContainerI {
+  isActionActivated: boolean
+}
+
+export const Container = styled.div<ContainerI>`
   width: 100%;
   height: 100%;
   display: flex;
@@ -12,6 +17,7 @@ export const Container = styled.div`
     rgba(172, 45, 82, 1) 65%,
     rgba(113, 29, 54, 1) 97%
   );
+  backdrop-filter: ${props => props.isActionActivated ? "blur(1px)" : null};
   position: relative;
 `;
 
@@ -31,7 +37,8 @@ export const WelcomeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid black;
+  margin-top: 30px;
+  border-bottom: 5px solid black;
   text-align: center;
 `;
 
@@ -48,6 +55,7 @@ export const WelcomeText = styled.h2`
 
 export const WelcomePfp = styled.img`
   height: 280px;
+  margin-bottom: 10px;
   @media (max-width: 480px) {
     height: 200px;
   }
@@ -61,7 +69,7 @@ export const ActionsContainer = styled.div`
   height: auto;
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid black;
+  margin-top: 20px;
 `;
 
 export const ActionContainer = styled.div`
@@ -70,7 +78,7 @@ export const ActionContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-bottom: 2px solid black;
+  border-bottom: 5px solid black;
   text-align: center;
 `;
 

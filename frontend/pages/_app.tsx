@@ -1,16 +1,21 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
-import AuthProvider from "../contexts/AuthContext"
-import { CanvasProvider } from '../contexts/CanvasContext'
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import AuthProvider from "../contexts/AuthContext";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { CanvasProvider } from "../contexts/CanvasContext";
+
+const theme = extendTheme();
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <CanvasProvider>
-        <Component {...pageProps} />
+        <ChakraProvider>
+          <Component {...pageProps} />
+        </ChakraProvider>
       </CanvasProvider>
     </AuthProvider>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

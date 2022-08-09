@@ -29,8 +29,8 @@ export const TitleContainer = styled.div`
 `
 
 export const Title = styled.h2`
-  color: black;
-  font-size: 35px;
+  color: white;
+  font-size: 40px;
   font-family: 'Noto-Sans', sans-serif;
   @media(max-width: 430px) {
     font-size: 30px;
