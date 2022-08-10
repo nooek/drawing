@@ -3,9 +3,12 @@ import HashPasswordInterface from "../../../interfaces/helpers/hashPasswordInter
 export default class HashPassword implements HashPasswordInterface {
   async hash(password: string) {
     const saltRounds = 10
-    const hashedPassword = await bcrypt.hash(password, saltRounds)
 
-    return hashedPassword;
+    if (password) {
+      const hashedPassword = await bcrypt.hash(password, saltRounds)
+      return hashedPassword;
+    }
+    return ""
   }
 
   async compare(password: string, hashedPassword: string) {

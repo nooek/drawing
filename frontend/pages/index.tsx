@@ -19,6 +19,7 @@ import CreateMatch from "../components/createMatch/createMatch"
 const Home: NextPage = () => {
   const [actionActivated, setActionActivated] = useState<string>("")
   const { user } = useContext(AuthContext)
+  console.log(user)
 
   return (
     <Container isActionActivated={actionActivated.length ? true : false} >
@@ -30,7 +31,7 @@ const Home: NextPage = () => {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Noto+Sans&family=Roboto&family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet" />
       </Head>
-      { actionActivated === "createMatch" ? <CreateMatch close={() => setActionActivated("")} /> : null }
+      { actionActivated === "createMatch" ? <CreateMatch userId={user.id} close={() => setActionActivated("")} /> : null }
       <DesktopNavbar />
       <GeneralContainer>
         <Welcome user={{ name: user.name, pfp: boy1Icon.src }}/>

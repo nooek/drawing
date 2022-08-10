@@ -8,7 +8,7 @@ export default class MatchRepo {
       const match = await Match.create({
         id: matchData.id,
         name: matchData.name,
-        password: matchData.password,
+        password: matchData.password ? matchData.password : null,
         category: matchData.category,
         maxPlayers: matchData.maxPlayers,
         status: "created",
@@ -16,18 +16,33 @@ export default class MatchRepo {
       })
       return match
     }catch(err) {
+      console.log(err)
       return new ServerError(500)
     }
   }
 
   async findByCreatorId(creatorId: string) {
     try {
-      const match = await Match.findOne({ where: { creaorId: creatorId } })
+      const match = await Match.findOne({ where: { creatorId: creatorId } })
 
       if (!match) return null
 
       return match
     } catch(err) {
+      console.log(err)
+      return new ServerError(500)
+    }
+  }
+
+  async findMatchInProgressByCreatorId(creatorId: string) {
+    try {
+      const match = await Match.findOne({ where: { creatorId: creatorId, status: "in-progress" } })
+
+      if (!match) return null
+
+      return match
+    } catch(err) {
+      console.log(err)
       return new ServerError(500)
     }
   }

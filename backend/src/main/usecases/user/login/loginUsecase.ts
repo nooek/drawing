@@ -39,7 +39,7 @@ export default class LoginUsecase implements LoginInterface {
 
     const userFound = await this.userDb.findByEmail(loginInfo.email);
     if (userFound instanceof Error) return userFound;
-    if (userFound.id === null) {
+    if (userFound === null) {
       return new this.InvalidParamError(
         {
           message: "User not found",
@@ -61,7 +61,9 @@ export default class LoginUsecase implements LoginInterface {
     const returnData = {
       name: userFound.name,
       email: userFound.email,
+      id: userFound.id
     };
+    console.log(returnData)
     const token = this.tokenGenerator.generate(returnData);
     return {
       statusCode: 200,

@@ -1,5 +1,7 @@
 import { Select } from "@chakra-ui/react";
+import axios from "axios";
 import { useState } from "react";
+import { api } from "../../services/api";
 import {
   Container,
   CreateMatchContainer,
@@ -19,6 +21,7 @@ import {
 
 type Props = {
   close: Function;
+  userId: string;
 }
 
 type MatchType = {
@@ -28,7 +31,7 @@ type MatchType = {
   password?: string;
 }
 
-const CreateMatch = ({ close }: Props) => {
+const CreateMatch = ({ close, userId }: Props) => {
   const [match, setMatch] = useState<MatchType>({
     name: "",
     category: "",
@@ -36,10 +39,24 @@ const CreateMatch = ({ close }: Props) => {
   })
 
   const createMatch = () => {
-
+    api.post("/match", {
+      matchData: {
+        name: match.name,
+        category: match.category.toLowerCase(),
+        password: match.password,
+        maxPlayers: match.maxPlayers,
+        creatorId: userId,
+      }
+    }).then((res) => {
+      if (res.status === 200) {
+        close()
+      }
+    }).catch((err) => {
+      if (err.response.message) {
+        console.log(err.response.message)
+      }
+    })
   }
-
-  console.log(match)
 
   return (
     <Container>

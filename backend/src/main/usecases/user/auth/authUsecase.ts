@@ -33,6 +33,7 @@ export default class AuthUsecase {
       const returnData = {
         name: userFound.name,
         email: userFound.email,
+        id: userFound.id
       };
       return {
         returnData,

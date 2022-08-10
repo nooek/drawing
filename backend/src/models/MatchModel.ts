@@ -32,7 +32,6 @@ class Match extends Model implements MatchI {
   @Column({ type: DataType.STRING })
   password!: string;
 
-  @Length({ min: 2, max: 12 })
   @AllowNull(false)
   @Column({ type: DataType.INTEGER })
   maxPlayers!: number;

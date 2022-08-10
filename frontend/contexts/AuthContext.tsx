@@ -7,6 +7,7 @@ import { api } from "../services/api";
 type User = {
   name: string;
   email: string;
+  id: string;
 }
 
 type LoginData = {
@@ -28,7 +29,7 @@ type AxiosLoginResponseType = {
 export const AuthContext = createContext({} as AuthContextType)
 
 const AuthProvider = ({ children }: any) => {
-  const [user, setUser] = useState<User>({ name: "", email: "" })
+  const [user, setUser] = useState<User>({ name: "", email: "", id: "" })
 
   const isAuthenticated = !!user;
 
@@ -44,7 +45,7 @@ const AuthProvider = ({ children }: any) => {
     if (token) {
       api.get("/user/auth").then((res) => {
         const redirect = checkRedirect()
-        console.log(redirect)
+        console.log(res.data)
         if (res.data.returnData.email === null && redirect) return Router.push("/login")
         setUser(res.data.returnData)
       }).catch(e => console.log(e))
@@ -74,7 +75,7 @@ const AuthProvider = ({ children }: any) => {
 
       console.log(user !== null)
 
-      if (user !== undefined) Router.push("/")
+      if (user.email.length > 0) Router.push("/")
   
       return ""
     }catch(err: any) {
