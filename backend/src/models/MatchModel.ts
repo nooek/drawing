@@ -37,6 +37,10 @@ class Match extends Model implements MatchI {
   @Column({ type: DataType.INTEGER })
   maxPlayers!: number;
 
+  @AllowNull(false)
+  @Column({ type: DataType.STRING })
+  status!: string; 
+
   @ForeignKey(() => User)
   @AllowNull(false)
   @Column({ type: DataType.STRING })

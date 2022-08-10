@@ -4,6 +4,7 @@ interface MatchI {
   password: string;
   category: string;
   maxPlayers: number;
+  status: string;
   creatorId: string;
 }
 

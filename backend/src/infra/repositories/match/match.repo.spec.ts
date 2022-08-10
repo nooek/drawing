@@ -34,6 +34,7 @@ describe("Test match repository", () => {
         password: "fake_password",
         category: "fake_category",
         maxPlayers: 10,
+        status: "create",
         creatorId: "creator_id",
     }
 

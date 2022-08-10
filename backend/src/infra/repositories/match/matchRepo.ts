@@ -11,6 +11,7 @@ export default class MatchRepo {
         password: matchData.password,
         category: matchData.category,
         maxPlayers: matchData.maxPlayers,
+        status: "created",
         creatorId: matchData.creatorId,
       })
       return match
