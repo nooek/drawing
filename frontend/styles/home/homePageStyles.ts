@@ -45,6 +45,7 @@ export const WelcomeContainer = styled.div`
 export const WelcomeText = styled.h2`
   font-size: 55px;
   color: #320d4f;
+  margin-bottom: 30px;
   @media (max-width: 480px) {
     font-size: 12vw;
   }

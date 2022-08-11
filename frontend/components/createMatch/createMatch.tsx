@@ -1,7 +1,9 @@
 import { Select } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { api } from "../../services/api";
+import { addMatch } from "../../store/matchs/action";
 import {
   Container,
   CreateMatchContainer,
@@ -37,6 +39,7 @@ const CreateMatch = ({ close, userId }: Props) => {
     category: "",
     maxPlayers: 2,
   })
+  const dispatch = useDispatch()
 
   const createMatch = () => {
     api.post("/match", {
@@ -48,7 +51,9 @@ const CreateMatch = ({ close, userId }: Props) => {
         creatorId: userId,
       }
     }).then((res) => {
+      console.log(res)
       if (res.status === 200) {
+        dispatch(addMatch(res.data))
         close()
       }
     }).catch((err) => {
@@ -73,6 +78,7 @@ const CreateMatch = ({ close, userId }: Props) => {
             </MaxPlayersInputContainer>
           </MaxPlayersInfoContainer>
           <FormInput variant="filled" placeholder="Password (not required)" onChange={(e) => setMatch({...match, password: e.target.value})} />
+          {/* Colocar em um component separado depois */}
           <SelectCategory variant="filled" placeholder="Select category" onChange={(e) => setMatch({...match, category: e.target.value})} >
             <option value="cartoons">Cartoons</option>
             <option value="vehicles">Vehicles</option>
@@ -81,6 +87,7 @@ const CreateMatch = ({ close, userId }: Props) => {
             <option value="objects">Objects</option>
             <option value="random">Random</option>
           </SelectCategory>
+          {/* ....................... */}
           <ButtonsContainer>
             <CreateButton colorScheme="blue" onClick={() => createMatch()}>Create</CreateButton>
             <CancelButton colorScheme="red" onClick={() => close()}>Cancel</CancelButton>

@@ -1,7 +1,6 @@
 import { useState } from "react"
 import type { NextPage, GetServerSideProps } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import { 
   Container,
   GeneralContainer,
@@ -16,6 +15,7 @@ import { AuthContext } from '../contexts/AuthContext'
 import { Actions, Welcome } from '../components/home'
 import CreateMatch from "../components/createMatch/createMatch"
 import { useSelector } from "react-redux"
+import Matchs from "../components/home/Matchs/matchs"
 
 const Home: NextPage = () => {
   const [actionActivated, setActionActivated] = useState<string>("")
@@ -37,6 +37,7 @@ const Home: NextPage = () => {
       <DesktopNavbar />
       <GeneralContainer>
         <Welcome user={{ name: user.name, pfp: boy1Icon.src }}/>
+        <Matchs />
         <Actions setActionActivated={setActionActivated} />
       </GeneralContainer>
       {/* <Canvas color="yellow" /> */}
