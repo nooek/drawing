@@ -3,16 +3,10 @@ import { useSelector } from "react-redux";
 import { api } from "../../../services/api";
 import {
   Container, 
-  MatchCard,
-  MatchCardName,
-  MatchCardNameContainer,
   MatchsContainer,
   MatchTitle,
-  MatchCardInfoContainer,
-  MatchCardInfo,
-  MatchCardButtonsContainer,
-  MatchCardButton
 } from "./styles";
+import MatchCard from "./matchCard";
 import { MatchI } from "../../../store/matchs/action";
 
 const Matchs = () => {
@@ -22,26 +16,9 @@ const Matchs = () => {
       <Container>
         <MatchTitle>Your matchs</MatchTitle>
         <MatchsContainer>
-            {
-            matchs.map((match: MatchI) => {
-                return (
-                  <MatchCard>
-                    <MatchCardNameContainer>
-                      <MatchCardName>{match.name}</MatchCardName>
-                    </MatchCardNameContainer>
-                    <MatchCardInfoContainer>
-                      <MatchCardInfo>Category: {match.category}</MatchCardInfo>
-                      <MatchCardInfo>Max Players: {match.maxPlayers}</MatchCardInfo>
-                      <MatchCardInfo isId={true}>Match Id: {match.id}</MatchCardInfo>
-                    </MatchCardInfoContainer>
-                    <MatchCardButtonsContainer>
-                      <MatchCardButton isStart={true}>Start</MatchCardButton>
-                      <MatchCardButton>Cancel</MatchCardButton>
-                    </MatchCardButtonsContainer>
-                  </MatchCard>
-                )
-            })
-            }
+          {
+            matchs.map((match: MatchI) => <MatchCard match={match} key={match.id} />)
+          }
         </MatchsContainer>
       </Container>
     )

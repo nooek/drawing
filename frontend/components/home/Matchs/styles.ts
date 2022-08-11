@@ -35,7 +35,7 @@ export const MatchTitle = styled.h2`
   }
 `;
 
-export const MatchCard = styled.div`
+export const MatchCardContainer = styled.div`
   width: 350px;
   height: 450px;
   display: flex;
