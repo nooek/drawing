@@ -7,15 +7,16 @@ export default class HttpAdapter {
     this.controller = controller;
   }
 
-  adapt() {
+  adapt(extraParams?: any) {
     return (req: Request, res: Response) => {
-      const httpRequest = {
+      const request = {
         body: req.body,
         params: req.params,
         req: req,
+        extraParams: extraParams
       };
       this.controller
-        .route(httpRequest)
+        .route(request)
         .then((httpResponse: any) => {
           res.status(httpResponse.statusCode).json(httpResponse.body);
         })

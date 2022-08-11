@@ -23,7 +23,7 @@ export default class MatchRepo {
 
   async findByCreatorId(creatorId: string) {
     try {
-      const match = await Match.findOne({ where: { creatorId: creatorId } })
+      const match = await Match.findAll({ where: { creatorId: creatorId } })
 
       if (!match) return null
 
@@ -34,9 +34,9 @@ export default class MatchRepo {
     }
   }
 
-  async findMatchInProgressByCreatorId(creatorId: string) {
+  async findMatchByStatusAndCreatorId(creatorId: string, status: string) {
     try {
-      const match = await Match.findOne({ where: { creatorId: creatorId, status: "in-progress" } })
+      const match = await Match.findAll({ where: { creatorId: creatorId, status: status } })
 
       if (!match) return null
 

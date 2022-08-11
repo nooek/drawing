@@ -1,9 +1,12 @@
-import { createMatchUsecase } from "../../../main/usecases/match";
-import { InvalidParamError } from "../../../utils/errors";
+import { createMatchUsecase, getMatchUsecase } from "../../../main/usecases/match";
+import { InvalidParamError, ServerError } from "../../../utils/errors";
 import CreateMatchController from "./createController/createController";
+import GetMatchController from "./getController/getMatchController";
 
 const createMatchController = new CreateMatchController(createMatchUsecase, InvalidParamError)
+const getMatchController = new GetMatchController(getMatchUsecase, InvalidParamError, ServerError)
 
 export {
-  createMatchController
+  createMatchController,
+  getMatchController
 }
