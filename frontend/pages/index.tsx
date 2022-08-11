@@ -15,11 +15,13 @@ import { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { Actions, Welcome } from '../components/home'
 import CreateMatch from "../components/createMatch/createMatch"
+import { useSelector } from "react-redux"
 
 const Home: NextPage = () => {
   const [actionActivated, setActionActivated] = useState<string>("")
   const { user } = useContext(AuthContext)
-  console.log(user)
+  const matchs = useSelector((state: any) => state.matchs.matchs)
+  console.log(matchs)
 
   return (
     <Container isActionActivated={actionActivated.length ? true : false} >

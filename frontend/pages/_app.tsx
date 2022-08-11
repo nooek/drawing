@@ -3,8 +3,7 @@ import type { AppProps } from "next/app";
 import AuthProvider from "../contexts/AuthContext";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { CanvasProvider } from "../contexts/CanvasContext";
-
-const theme = extendTheme();
+import { wrapper } from "../store";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -18,4 +17,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
