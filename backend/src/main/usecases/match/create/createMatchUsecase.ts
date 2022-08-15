@@ -34,8 +34,9 @@ export default class CreateMatchUsecase {
     });
     if (matchEntity instanceof Error) return matchEntity;
 
-    const someMatchInProgress = await this.matchDb.findMatchInProgressByCreatorId(matchEntity.getCreatorId())
-    if (someMatchInProgress !== null) {
+    const someMatchInProgress = await this.matchDb.findMatchByStatusAndCreatorId(matchEntity.getCreatorId(), "in-progress")
+    console.log(someMatchInProgress)
+    if (someMatchInProgress.length > 0) {
       return new this.UnauthorizedError(
         {
           message: "You already have a match in progress, please wait for it to end",

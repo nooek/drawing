@@ -25,7 +25,6 @@ export const GeneralContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  border: 1px solid yellow;
 `;
 
 // Put in separeted component

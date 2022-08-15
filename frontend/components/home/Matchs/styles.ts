@@ -17,6 +17,7 @@ export const MatchsContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-around;
 `
 
@@ -42,7 +43,8 @@ export const MatchCardContainer = styled.div`
   flex-direction: column;
   border: 4.5px solid rgb(87, 9, 117);
   border-radius: 8px;
-  box-shadow: 6px 6px 5px black;
+  box-shadow: 3px 3px 10px black;
+  margin-top: 20px;
   background: linear-gradient(180deg, rgba(244,3,255,1) 0%, rgba(144,12,150,1) 100%);
 `
 

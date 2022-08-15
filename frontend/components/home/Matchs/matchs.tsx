@@ -9,8 +9,11 @@ import {
 import MatchCard from "./matchCard";
 import { MatchI } from "../../../store/matchs/action";
 
-const Matchs = () => {
-  const matchs = useSelector((state: any) => state.matchs.matchs)
+type Props = {
+  matchs: MatchI[]
+}
+
+const Matchs = ({ matchs }: Props) => {
   if (matchs.length) {
     return (
       <Container>
@@ -24,12 +27,6 @@ const Matchs = () => {
     )
   } else {
     return null
-  }
-}
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  return {
-    props: {}
   }
 }
 

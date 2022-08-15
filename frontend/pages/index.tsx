@@ -1,5 +1,6 @@
 import { useState } from "react"
 import type { NextPage, GetServerSideProps } from 'next'
+import jwt_decode from "jwt-decode";
 import Head from 'next/head'
 import { 
   Container,
@@ -14,14 +15,21 @@ import { useContext } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { Actions, Welcome } from '../components/home'
 import CreateMatch from "../components/createMatch/createMatch"
-import { useSelector } from "react-redux"
 import Matchs from "../components/home/Matchs/matchs"
+import { api } from "../services/api"
+import { UserInfoI } from "../interfaces/UserI";
 
-const Home: NextPage = () => {
+import { MatchI } from "../interfaces/MatchI";
+
+type Props = {
+  matchs: MatchI[]
+}
+
+const Home: NextPage<Props> = (props) => {
   const [actionActivated, setActionActivated] = useState<string>("")
+  const [matchs, setMatchs] = useState<MatchI[] | []>(props.matchs)
   const { user } = useContext(AuthContext)
-  const matchs = useSelector((state: any) => state.matchs.matchs)
-  console.log(matchs)
+  console.log(props.matchs)
 
   return (
     <Container isActionActivated={actionActivated.length ? true : false} >
@@ -37,7 +45,7 @@ const Home: NextPage = () => {
       <DesktopNavbar />
       <GeneralContainer>
         <Welcome user={{ name: user.name, pfp: boy1Icon.src }}/>
-        <Matchs />
+        <Matchs matchs={matchs} />
         <Actions setActionActivated={setActionActivated} />
       </GeneralContainer>
       {/* <Canvas color="yellow" /> */}
@@ -57,9 +65,18 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
   }
 
+  const user: UserInfoI = jwt_decode(token);
+
+  const { data } = await api.get(`http://localhost:8888/match/created/creatorid/${user.id}`) as { data: MatchI[] }
+
+  const _props: Props = {
+    matchs: data
+  }
+
   return {
-    props: {}
+    props: _props
   }
 }
+
 
 export default Home
