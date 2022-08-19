@@ -1,8 +1,10 @@
+import { BaseResponseConstructor } from "../../../../utils/errors/interfaces";
+
 export default class createMatchController {
   private createMatchUsecase: any;
-  private InvalidParamError: any;
+  private InvalidParamError: BaseResponseConstructor;
 
-  constructor(createMatchUsecase: any, InvalidParamError: any) {
+  constructor(createMatchUsecase: any, InvalidParamError: BaseResponseConstructor) {
     this.createMatchUsecase = createMatchUsecase;
     this.InvalidParamError = InvalidParamError;
   }
@@ -11,10 +13,7 @@ export default class createMatchController {
     try {
       const { body } = httpRequest
 
-      if (!body) return new this.InvalidParamError({ message: "Invalid data format" }, 400)
-
-      const match = await this.createMatchUsecase.execute(body.matchData)
-      console.log(match)
+      const match = await this.createMatchUsecase.execute(body)
 
       return {
         statusCode: match.statusCode,

@@ -9,7 +9,7 @@ import {
   ForeignKey,
   BelongsTo,
 } from "sequelize-typescript";
-import MatchI from "../interfaces/models/matchInterface";
+import { MatchI } from "../interfaces/models/matchInterface";
 import User from "./UserModel";
 
 @Table

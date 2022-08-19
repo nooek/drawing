@@ -6,9 +6,9 @@ export default class CreateUserController {
     try {
       const { body } = httpRequest
 
-      if (!body) return new InvalidParamError({ message: "Invalid data format" }, 400)
+      if (!body) return new InvalidParamError(400, { message: "Invalid data format" })
 
-      const user = await createUserUsecase.execute(body.userData)
+      const user = await createUserUsecase.execute(body)
       console.log(user)
 
       return {

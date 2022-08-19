@@ -1,9 +1,9 @@
 import Match from "../../../models/MatchModel";
-import MatchI from "../../../interfaces/models/matchInterface";
+import { MatchI, MatchRepoI } from "../../../interfaces/models/matchInterface";
 import { ServerError } from "../../../utils/errors";
 
-export default class MatchRepo {
-  async create(matchData: MatchI) {
+export default class MatchRepo implements MatchRepoI {
+  async create(matchData: MatchI): Promise<MatchI | ServerError> {
     try {
       const match = await Match.create({
         id: matchData.id,
@@ -11,7 +11,7 @@ export default class MatchRepo {
         password: matchData.password ? matchData.password : null,
         category: matchData.category,
         maxPlayers: matchData.maxPlayers,
-        status: "created",
+        status: matchData.status || "created",
         creatorId: matchData.creatorId,
       })
       return match

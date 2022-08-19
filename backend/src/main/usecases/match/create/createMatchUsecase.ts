@@ -1,20 +1,20 @@
-import MatchI from "../../../../interfaces/models/matchInterface";
 import HashPasswordInterface from "../../../../interfaces/helpers/hashPasswordInterface";
-import { match } from "assert";
+import { CreateMatchUsecaseI, MatchEntityI, MatchI, MatchRepoI } from "../../../../interfaces2/Match/MatchI";
+import { BaseResponseConstructor } from "../../../../utils/errors/interfaces";
 
-export default class CreateMatchUsecase {
-  private matchEntity;
-  private matchDb;
+export default class CreateMatchUsecase implements CreateMatchUsecaseI {
+  private matchEntity: MatchEntityI;
+  private matchDb: MatchRepoI;
   public uuid;
   private hashPassword: HashPasswordInterface;
-  private UnauthorizedError: any;
+  private UnauthorizedError: BaseResponseConstructor;
 
   constructor(
-    matchEntity: any,
+    matchEntity: MatchEntityI,
     matchDb: any,
     uuid: Function,
     hashPassword: HashPasswordInterface,
-    UnauthorizedError: any
+    UnauthorizedError: BaseResponseConstructor
   ) {
     this.matchEntity = matchEntity;
     this.matchDb = matchDb;
@@ -27,7 +27,7 @@ export default class CreateMatchUsecase {
     const matchEntity = await this.matchEntity.create({
       id: this.uuid(),
       name: matchData.name,
-      password: matchData.password || null,
+      password: matchData.password,
       category: matchData.category,
       maxPlayers: matchData.maxPlayers,
       creatorId: matchData.creatorId,
@@ -36,13 +36,12 @@ export default class CreateMatchUsecase {
 
     const someMatchInProgress = await this.matchDb.findMatchByStatusAndCreatorId(matchEntity.getCreatorId(), "in-progress")
     console.log(someMatchInProgress)
-    if (someMatchInProgress.length > 0) {
-      return new this.UnauthorizedError(
+    if (someMatchInProgress) {
+      return new this.UnauthorizedError(400,
         {
           message: "You already have a match in progress, please wait for it to end",
-        },
-        400,
-      );
+
+        });
     }
 
     const hashedPassword = await this.hashPassword.hash(matchEntity.getPassword());
@@ -50,12 +49,11 @@ export default class CreateMatchUsecase {
     const createdMatch = await this.matchDb.create({
       id: matchEntity.getId(),
       name: matchEntity.getName(),
-      password: hashedPassword ? hashedPassword : null,
+      password: hashedPassword,
       category: matchEntity.getCategory(),
       maxPlayers: matchEntity.getMaxPlayers(),
       creatorId: matchEntity.getCreatorId()
     })
-    console.log(createdMatch instanceof Error)
     if (createdMatch instanceof Error) return createdMatch
 
     return {
@@ -65,7 +63,7 @@ export default class CreateMatchUsecase {
         name: matchEntity.getName(),
         category: matchEntity.getCategory(),
         maxPlayers: matchEntity.getMaxPlayers(),
-      }
+      },
     }
   }
 }

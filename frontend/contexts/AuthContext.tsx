@@ -15,10 +15,15 @@ type LoginData = {
   password: string;
 }
 
+interface ErrorMessage {
+  message: string
+}
+
 type AuthContextType = {
   isAuthenticated: boolean;
   user: User;
-  login: (data: LoginData) => Promise<string>
+  login: (data: LoginData) => Promise<string | undefined>;
+  setUser: React.Dispatch<React.SetStateAction<User>>;
 }
 
 type AxiosLoginResponseType = {
@@ -52,9 +57,7 @@ const AuthProvider = ({ children }: any) => {
     }
   }, [])
 
-  console.log(user)
-
-  const login = async ({ email, password }: LoginData): Promise<string> => {
+  const login = async ({ email, password }: LoginData): Promise<string | undefined> => {
     try {
       const { data } = await api.post("/user/login", {
         loginInfo: {
@@ -62,23 +65,17 @@ const AuthProvider = ({ children }: any) => {
           password: password
         }
       }) as { data: AxiosLoginResponseType }
-
-      console.log(data)
       
       setCookie(undefined, 'drawingauth.token', data.token, {
         maxAge: 60 * 60 * 72 // 3 days
       })
 
       api.defaults.headers.common.Authorization = `Bearer ${data.token}`
-      
-      await setUser(data.responseData)
 
-      console.log(user !== null)
+      setUser(data.responseData)
 
-      if (user.email.length > 0) Router.push("/")
-  
-      return ""
-    }catch(err: any) {
+      Router.push("/")
+    } catch(err: any) {
       console.log(err)
       if (err.response) return err.response.data.message
       return "Some error happened"
@@ -86,7 +83,7 @@ const AuthProvider = ({ children }: any) => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, login }}>
+    <AuthContext.Provider value={{ user, setUser, isAuthenticated, login }}>
       { children }
     </AuthContext.Provider>
   )

@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react"
-import axios from "axios"
 import { 
   Container,
   RegisterText,
@@ -23,12 +22,13 @@ const Login = () => {
   })
   const [blockButton, setBlockButton] = useState<boolean>(false)
   const [message, setMessage] = useState<string>("")
-  const { login } = useContext(AuthContext)
+  const { login, setUser } = useContext(AuthContext)
   
   const handleLogin = async () => {
     const response = await login(formsData)
-    console.log(response)
-    setMessage(response)
+    if (response) {
+      setMessage(response)
+    }
   }
 
   return (

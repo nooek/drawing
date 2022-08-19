@@ -8,7 +8,7 @@ interface BaseResponseI {
   body?: body;
 }
 
-export interface MatchConstructor {
+export interface BaseResponseConstructor {
   new (statusCode: number, body?: body);
 }
 
