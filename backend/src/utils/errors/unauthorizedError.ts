@@ -4,7 +4,7 @@ export default class UnauthorizedError extends Error implements BaseResponseI {
   body: body;
   statusCode: number;
 
-  constructor(body: body, statusCode: number) {
+  constructor(statusCode: number, body: body) {
     super("Unauthorized Error")
     this.body = body;
     this.statusCode = statusCode | 400;

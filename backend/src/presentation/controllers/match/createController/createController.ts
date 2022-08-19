@@ -2,11 +2,9 @@ import { BaseResponseConstructor } from "../../../../utils/errors/interfaces";
 
 export default class createMatchController {
   private createMatchUsecase: any;
-  private InvalidParamError: BaseResponseConstructor;
 
-  constructor(createMatchUsecase: any, InvalidParamError: BaseResponseConstructor) {
+  constructor(createMatchUsecase: any) {
     this.createMatchUsecase = createMatchUsecase;
-    this.InvalidParamError = InvalidParamError;
   }
 
   async route(httpRequest: any) {

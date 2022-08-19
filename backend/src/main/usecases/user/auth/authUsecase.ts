@@ -1,11 +1,12 @@
 import TokenGeneratorInterface from "../../../../interfaces/helpers/tokenGeneratorInterface";
+import { BaseResponseConstructor } from "../../../../utils/errors/interfaces";
 
 export default class AuthUsecase {
   private userDb: any
   private tokenGenerator: TokenGeneratorInterface
-  private MissingParamError: any
+  private MissingParamError: BaseResponseConstructor
   
-  constructor(userDb: any, tokenGenerator: TokenGeneratorInterface, MissingParamError: any) {
+  constructor(userDb: any, tokenGenerator: TokenGeneratorInterface, MissingParamError: BaseResponseConstructor) {
     this.userDb = userDb;
     this.tokenGenerator = tokenGenerator;
     this.MissingParamError = MissingParamError;
@@ -14,11 +15,8 @@ export default class AuthUsecase {
   async execute(token: string) {
     try {
       if (!token) {
-        throw new this.MissingParamError({
-          statusCode: 400,
-          body: {
-            message: "Token was not provided"
-          }
+        throw new this.MissingParamError(400, {
+          message: "Token was not provided"
         })
       }
 

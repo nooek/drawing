@@ -1,9 +1,10 @@
+import { BaseResponseConstructor } from "../../../../utils/errors/interfaces";
 export default class GetMatchController {
   private getMatchUsecase: any;
   private InvalidParamError: any;
-  private ServerError: any;
+  private ServerError: BaseResponseConstructor;
 
-  constructor(getMatchUsecase: any, InvalidParamError: any, ServerError: any) {
+  constructor(getMatchUsecase: any, InvalidParamError: any, ServerError: BaseResponseConstructor) {
     this.getMatchUsecase = getMatchUsecase;
     this.InvalidParamError = InvalidParamError;
     this.ServerError = ServerError

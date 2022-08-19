@@ -1,18 +1,18 @@
 import { user } from "../../../../domain/entities";
 import UserAttributes from "../../../../types/UserType";
 import HashPasswordInterface from "../../../../interfaces/helpers/hashPasswordInterface";
-
+import { BaseResponseConstructor } from "../../../../utils/errors/interfaces";
 export default class CreateUserUsecase {
   private userDb;
   public uuid;
   private hashPassword: HashPasswordInterface;
-  private UnauthorizedError;
+  private UnauthorizedError: BaseResponseConstructor
 
   constructor(
     userDb: any,
     uuid: Function,
     hashPassword: HashPasswordInterface,
-    UnauthorizedError: any,
+    UnauthorizedError: BaseResponseConstructor,
   ) {
     this.userDb = userDb;
     this.uuid = uuid;
@@ -34,12 +34,9 @@ export default class CreateUserUsecase {
 
     const userExists = await this.userDb.findByEmail(userData.email);
     if (userExists !== null) {
-      return new this.UnauthorizedError(
-        {
-          message: "User already exists",
-        },
-        400,
-      );
+      return new this.UnauthorizedError(400, {
+        message: "User already exists",
+      });
     }
 
     const createdUser = await this.userDb.create({
